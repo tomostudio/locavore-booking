@@ -126,7 +126,7 @@ export default function Home() {
         src='https://cdn.rsvp-popup.com/webcomponents/rsvp-elements/1.0/rsvp.js'
       />
 
-      <main dangerouslySetInnerHTML={RSVPinsert()} />
+      <main className={styles.main} dangerouslySetInnerHTML={RSVPinsert()} />
 
       <footer className={styles.footer}>
         <a

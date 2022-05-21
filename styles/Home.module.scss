@@ -10,6 +10,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  & rsvp-element{
+    width: 100%;
+    max-width: 600px;
+  }
 }
 
 .footer {
