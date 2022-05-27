@@ -83,7 +83,7 @@ const SubscribeForm = ({
       {...props}
     >
       <label className='text-xl font-normal'>
-        Sign up with email for what's NXT
+        {`Sign up with email for what's NXT`}
       </label>
       <div
         className={`relative mt-5 w-full border-white pb-2.5 border-b flex h-10 ${

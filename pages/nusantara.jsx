@@ -1,16 +1,17 @@
-import Container from '@/components/modules/container'
-import Footer from '@/components/modules/footer'
-import HeaderGap from '@/components/modules/headerGap'
-import Layout from '@/components/modules/layout'
-import FancyLink from '@/components/utils/fancyLink'
-import SEO from '@/components/utils/seo'
-import { Whatsapp } from '@/helpers/preset/svg'
-import client from '@/helpers/sanity/client'
-import Script from 'next/script'
+import React from 'react';
+import Container from '@/components/modules/container';
+import Footer from '@/components/modules/footer';
+import HeaderGap from '@/components/modules/headerGap';
+import Layout from '@/components/modules/layout';
+import FancyLink from '@/components/utils/fancyLink';
+import SEO from '@/components/utils/seo';
+import { Whatsapp } from '@/helpers/preset/svg';
+import client from '@/helpers/sanity/client';
+import Script from 'next/script';
 
 export default function Nusantara({ seoAPI, footerAPI }) {
-  const [seo] = seoAPI
-  const [footer] = footerAPI
+  const [seo] = seoAPI;
+  const [footer] = footerAPI;
 
   const RSVPinsert = () => {
     return {
@@ -115,38 +116,38 @@ export default function Nusantara({ seoAPI, footerAPI }) {
           </template>
         </rsvp-booking-steps>
   </rsvp-element>`,
-    }
-  }
+    };
+  };
   return (
     <Layout>
       <SEO
-        title="Booking Nusantara"
+        title='Booking Nusantara'
         defaultSEO={typeof seo !== 'undefined' && seo.seo}
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
-      <Script src="https://js.stripe.com/v3/" />
+      <Script src='https://js.stripe.com/v3/' />
       <Script
-        type="module"
-        src="https://cdn.rsvp-popup.com/webcomponents/rsvp-elements/1.0/rsvp.esm.js"
+        type='module'
+        src='https://cdn.rsvp-popup.com/webcomponents/rsvp-elements/1.0/rsvp.esm.js'
       />
       <Script
         nomodule
-        src="https://cdn.rsvp-popup.com/webcomponents/rsvp-elements/1.0/rsvp.js"
+        src='https://cdn.rsvp-popup.com/webcomponents/rsvp-elements/1.0/rsvp.js'
       />
       <HeaderGap />
       <Container>
         <main dangerouslySetInnerHTML={RSVPinsert()} />
 
-        <div class="setflex-center mb-16 mt-10">
-          <p class="flex">
+        <div className='setflex-center mb-16 mt-10'>
+          <p className='flex'>
             If you have any difficulties or further questions please contact us
             on
             <FancyLink
-              className="flex"
-              destination="http://wa.me/6282146813714"
+              className='flex'
+              destination='http://wa.me/6282146813714'
               blank={true}
             >
-              <Whatsapp className="ml-2 mr-1" />
+              <Whatsapp className='ml-2 mr-1' />
               +62 821 4681 3714
             </FancyLink>
           </p>
@@ -154,7 +155,7 @@ export default function Nusantara({ seoAPI, footerAPI }) {
       </Container>
       <Footer footer={footer} mailchimp={seo.mailchimpID} />
     </Layout>
-  )
+  );
 }
 
 export async function getStaticProps() {
@@ -162,16 +163,16 @@ export async function getStaticProps() {
   *[_type == "home"] {
     issue->
   }
-  `)
+  `);
   const seoAPI = await client.fetch(`
                     *[_type == "settings"]
-                    `)
+                    `);
   const headerAPI = await client.fetch(`
                     *[_type == "header"]
-                    `)
+                    `);
   const footerAPI = await client.fetch(`
                     *[_type == "footer"]
-                    `)
+                    `);
   return {
     props: {
       seoAPI,
@@ -179,5 +180,5 @@ export async function getStaticProps() {
       homeAPI,
       headerAPI,
     },
-  }
+  };
 }

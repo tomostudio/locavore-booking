@@ -1,25 +1,25 @@
-import BasicModal from '@/components/modules/basicModal'
-import Container from '@/components/modules/container'
-import Footer from '@/components/modules/footer'
-import HeaderGap from '@/components/modules/headerGap'
-import Layout from '@/components/modules/layout'
-import FancyLink from '@/components/utils/fancyLink'
-import SEO from '@/components/utils/seo'
-import { Whatsapp } from '@/helpers/preset/svg'
-import client from '@/helpers/sanity/client'
-import Head from 'next/head'
-import Image from 'next/image'
-import Script from 'next/script'
-import { useState } from 'react'
+import React, { useState } from 'react';
+import BasicModal from '@/components/modules/basicModal';
+import Container from '@/components/modules/container';
+import Footer from '@/components/modules/footer';
+import HeaderGap from '@/components/modules/headerGap';
+import Layout from '@/components/modules/layout';
+import FancyLink from '@/components/utils/fancyLink';
+import SEO from '@/components/utils/seo';
+import { Whatsapp } from '@/helpers/preset/svg';
+import client from '@/helpers/sanity/client';
+import Head from 'next/head';
+import Image from 'next/image';
+import Script from 'next/script';
 
 export default function Home({ seoAPI, footerAPI }) {
-  const [seo] = seoAPI
-  const [footer] = footerAPI
-  const [modalData, setModalData] = useState(false)
+  const [seo] = seoAPI;
+  const [footer] = footerAPI;
+  const [modalData, setModalData] = useState(false);
 
   const closeModal = () => {
-    setModalData(false)
-  }
+    setModalData(false);
+  };
 
   const RSVPinsert = () => {
     return {
@@ -124,44 +124,44 @@ export default function Home({ seoAPI, footerAPI }) {
           </template>
         </rsvp-booking-steps>
   </rsvp-element>`,
-    }
-  }
+    };
+  };
   return (
     <Layout>
       <SEO
-        title="Booking Locavore"
+        title='Booking Locavore'
         defaultSEO={typeof seo !== 'undefined' && seo.seo}
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
-      <Script src="https://js.stripe.com/v3/" />
+      <Script src='https://js.stripe.com/v3/' />
       <Script
-        type="module"
-        src="https://cdn.rsvp-popup.com/webcomponents/rsvp-elements/1.0/rsvp.esm.js"
+        type='module'
+        src='https://cdn.rsvp-popup.com/webcomponents/rsvp-elements/1.0/rsvp.esm.js'
       />
       <Script
         nomodule
-        src="https://cdn.rsvp-popup.com/webcomponents/rsvp-elements/1.0/rsvp.js"
+        src='https://cdn.rsvp-popup.com/webcomponents/rsvp-elements/1.0/rsvp.js'
       />
       <HeaderGap />
       <Container>
         <main dangerouslySetInnerHTML={RSVPinsert()} />
 
-        <div class="setflex-center mb-16 mt-10">
-          <p class="flex">
+        <div className='setflex-center mb-16 mt-10'>
+          <p className='flex'>
             If you have any difficulties or further questions please contact us
             on
             <FancyLink
-              className="flex"
-              destination="https://wa.me/6282144956226"
+              className='flex'
+              destination='https://wa.me/6282144956226'
               blank={true}
             >
-              <Whatsapp className="ml-2 mr-1" />
+              <Whatsapp className='ml-2 mr-1' />
               +62 821 4495 6226
             </FancyLink>
           </p>
           <FancyLink
             onClick={() => setModalData(true)}
-            className="mt-8 py-4 px-6 text-sm font-bold tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl pointer-events-auto"
+            className='mt-8 py-4 px-6 text-sm font-bold tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl pointer-events-auto'
           >
             GROUP RESERVATION
           </FancyLink>
@@ -172,11 +172,11 @@ export default function Home({ seoAPI, footerAPI }) {
           onRequestClose={closeModal}
           classNameModalContent={`popup`}
         >
-          <div className="flex flex-col justify-center w-full h-full bg-white absolute-center md:justify-start md:relative md:top-auto md:left-auto md:translate-x-0 md:translate-y-0">
-            <span className="block font-bold text-lg text-center leading-tight mb-6 lg:font-bold lg:mb-8">
-              LOCALAB <span className="block mt-2">•</span>
+          <div className='flex flex-col justify-center w-full h-full bg-white absolute-center md:justify-start md:relative md:top-auto md:left-auto md:translate-x-0 md:translate-y-0'>
+            <span className='block font-bold text-lg text-center leading-tight mb-6 lg:font-bold lg:mb-8'>
+              LOCALAB <span className='block mt-2'>•</span>
             </span>
-            <p className="text-center">
+            <p className='text-center'>
               LocaLab is a food laboratory and testing kitchen which is the
               centre of Locavore’s research and development. Local ingredients
               of all kinds meet state-of-the-art techniques and the creative
@@ -189,25 +189,29 @@ export default function Home({ seoAPI, footerAPI }) {
               <br />
               <br />
               For booking please send us an email to
-              <span className="italic font-serif font-semibold">
+              <span className='italic font-serif font-semibold'>
                 riyan@locavore.co.id
               </span>
               <br />
-              with at least <span className="font-semibold">2 days notice</span>
+              with at least <span className='font-semibold'>2 days notice</span>
               .
               <br />
               <br />
-              <hr className="w-72 mx-auto" />
+              <hr className='w-72 mx-auto' />
               <br />
               <span>
                 If you have any questions or would like to chat to us before
                 making a booking, please feel free to get in touch on
                 <FancyLink
-                  className="inline-flex items-center"
-                  destination="https://wa.me/6282144956226"
+                  className='inline-flex items-center'
+                  destination='https://wa.me/6282144956226'
                   blank={true}
                 >
-                  <Whatsapp width={16} height={16} className="inline ml-2 mr-1" />
+                  <Whatsapp
+                    width={16}
+                    height={16}
+                    className='inline ml-2 mr-1'
+                  />
                   WhatsApp.
                 </FancyLink>
               </span>
@@ -217,7 +221,7 @@ export default function Home({ seoAPI, footerAPI }) {
       </Container>
       <Footer footer={footer} mailchimp={seo.mailchimpID} />
     </Layout>
-  )
+  );
 }
 
 export async function getStaticProps() {
@@ -225,16 +229,16 @@ export async function getStaticProps() {
   *[_type == "home"] {
     issue->
   }
-  `)
+  `);
   const seoAPI = await client.fetch(`
                     *[_type == "settings"]
-                    `)
+                    `);
   const headerAPI = await client.fetch(`
                     *[_type == "header"]
-                    `)
+                    `);
   const footerAPI = await client.fetch(`
                     *[_type == "footer"]
-                    `)
+                    `);
   return {
     props: {
       seoAPI,
@@ -242,5 +246,5 @@ export async function getStaticProps() {
       homeAPI,
       headerAPI,
     },
-  }
+  };
 }
