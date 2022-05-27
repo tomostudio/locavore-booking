@@ -1,0 +1,118 @@
+/* Content Stylings */
+
+/* Heading Defaults */
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3 {
+  -webkit-touch-callout: text; /* iOS Safari */
+  -webkit-user-select: text; /* Safari */
+  -khtml-user-select: text; /* Konqueror HTML */
+  -moz-user-select: text; /* Old versions of Firefox */
+  -ms-user-select: text; /* Internet Explorer/Edge */
+  user-select: text;
+}
+
+h1,
+.h1 {
+  @apply font-default p-0 mt-0 mb-4 max-md:max-w-full max-md:break-words;
+  @apply text-6xl sm:text-7xl md:text-8xl;
+  @apply select-text;
+}
+
+h2,
+.h2 {
+  @apply font-default p-0 mt-0 mb-4;
+  @apply text-xl sm:text-2xl md:text-4xl lg:text-4xl;
+  @apply select-text;
+}
+
+.editor-styling {
+  @apply flex flex-col;
+  & > * {
+    @apply block my-3 first:mt-0 last:mb-0;
+  }
+  & > p > a {
+    @apply underline hover:opacity-50 transition-opacity cursor-pointer;
+  }
+  & > * a {
+    word-break: break-all;
+  }
+  &.blog {
+    & > *:not(a) {
+      cursor: default;
+    }
+    & h1 {
+      @apply font-sans font-bold;
+      @apply text-5xl sm:text-6xl md:text-7xl;
+    }
+    & h2 {
+      @apply font-default font-bold;
+      @apply text-4xl sm:text-5xl;
+    }
+    & h3 {
+      @apply font-sans font-bold;
+      @apply text-xl sm:text-2xl;
+    }
+    & h4 {
+      @apply font-default font-bold;
+      @apply text-xl sm:text-2xl;
+    }
+    & h5 {
+      @apply font-serif font-bold;
+      @apply text-lg sm:text-xl;
+    }
+    & > h1,
+    & > h2 {
+      @apply px-0;
+    }
+    & > h3,
+    & > h4,
+    & > h5,
+    & > .column,
+    & > .image,
+    & > .code,
+    & > ol,
+    & > p {
+      @apply w-full;
+      @apply px-20 max-md:px-0;
+      @apply block my-3 first:mt-0 last:mb-0;
+    }
+    & > ol {
+      @apply pr-20 pl-[7.25rem] max-md:pr-0 max-md:pl-9;
+    }
+    & ol {
+      @apply list-decimal;
+      @apply text-xl;
+    }
+    & > .column {
+      @apply grid grid-cols-2 max-md:grid-cols-1;
+      & ol {
+        @apply pl-9;
+      }
+    }
+    & > .video > .caption {
+      @apply max-md:px-0;
+    }
+  }
+}
+
+h1.titlestyle {
+  @apply flex mb-0 max-md:flex-wrap justify-center items-start font-sans font-normal flex-wrap;
+  @apply text-6xl sm:text-7xl lg:text-8xl;
+  & .sub {
+    @apply font-serif italic font-normal;
+    @apply mt-1 mx-3 md:mx-4 md:mt-2 lg:mt-2;
+    @apply text-4xl lg:text-5xl;
+  }
+}
+
+h2.editor-title {
+  @apply font-sans font-normal break-words text-left max-md:text-center;
+  @apply text-6xl sm:text-7xl lg:text-8xl;
+  &.smaller {
+    @apply text-4xl sm:text-[3.5rem] sm:leading-none md:text-6xl;
+  }
+}

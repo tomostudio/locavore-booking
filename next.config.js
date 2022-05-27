@@ -1,10 +1,18 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-  urlImports: [
-    'https://cdn.rsvp-popup.com/webcomponents/rsvp-elements/1.0/rsvp.esm.js',
-    'https://cdn.rsvp-popup.com/webcomponents/rsvp-elements/1.0/rsvp.js',
-  ],
-};
+module.exports = {
+  strictMode: true,
+  webpack: (config, { dev, isServer }) => {
+    // Replace React with Preact only in client production build
+    if (!dev && !isServer) {
+      Object.assign(config.resolve.alias, {
+        react: 'preact/compat',
+        'react-dom/test-utils': 'preact/test-utils',
+        'react-dom': 'preact/compat',
+      });
+    }
 
-module.exports = nextConfig;
+    return config;
+  },
+  images: {
+    domains: ['cdn.sanity.io']
+  }
+};

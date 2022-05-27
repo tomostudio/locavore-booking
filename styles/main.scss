@@ -1,0 +1,24 @@
+/* Tailwind base/components */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Webfonts */
+@import '_fonts.scss';
+@import '_utils.scss';
+
+/* Custom Style Imports */
+@import '_typography.scss';
+
+/* React Modal Styling */
+@import "_modal.scss";
+
+/* Other Styling */
+@import '_global.scss';
+
+
+/* Simple defaults */
+body {
+  @apply font-default tracking-wide font-normal antialiased text-black bg-white;
+  overscroll-behavior: none;
+}
