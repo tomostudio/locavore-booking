@@ -102,3 +102,112 @@ rsvp-pax-section,
 rsvp-selector-row {
   text-transform: capitalize !important;
 }
+
+.ContactDetails {
+  display: flex;
+  flex-flow: column nowrap;
+  @apply space-y-5;
+  .phone-input-inner {
+    display: flex;
+    width: 100%;
+    margin-top: 2px;
+    @apply space-x-2;
+    & > * {
+      border: 1px solid black;
+      border-radius: 4px;
+      padding: 5px 5px;
+      font-size: 16px;
+      &:focus {
+        outline: #000;
+      }
+      &:last-child {
+        flex-grow: 2;
+        align-self: stretch;
+        padding: 5px 10px;
+      }
+    }
+  }
+}
+rsvp-booking-additional-info {
+  & > div > div {
+    margin-bottom: 20px;
+  }
+}
+rsvp-custom-form-container {
+  display: flex;
+  flex-flow: column nowrap;
+  @apply space-y-5;
+}
+div.errors > div {
+  margin-bottom: 20px;
+  border: 1px solid #830a0a;
+  border-radius: 4px;
+  padding: 5px 10px;
+  color: #830a0a;
+}
+// back button
+rsvp-step-link > span {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px 10px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.ConfirmInfo {
+  display: flex;
+  flex-flow: column nowrap;
+  @apply space-y-5;
+  & select {
+    margin-left: 2px;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 5px 10px;
+    padding-right: 40px;
+    font-size: 16px;
+    &:focus {
+      outline: #000;
+    }
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    background-image: linear-gradient(45deg, transparent 50%, black 50%),
+      linear-gradient(135deg, black 50%, transparent 50%);
+    background-position: calc(100% - 15px) calc(1em),
+      calc(100% - 10px) calc(1em);
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+  }
+}
+rsvp-input {
+  & label {
+    text-transform: uppercase;
+    margin: 0px;
+  }
+  & input,
+  textarea {
+    margin-top: 2px;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-size: 16px;
+    &:focus {
+      outline: #000;
+    }
+  }
+}
+
+input[type='checkbox'] {
+  margin-right: 5px;
+}
+rsvp-special-announcement {
+  display: none;
+}
+rsvp-selector-row {
+  --rsvp-selector-text-transform: capitalize;
+  --rsvp-font-weight: 500;
+  --rsvp-text-primary: black;
+  --rsvp-font: 'whyte Inktrap';
+}

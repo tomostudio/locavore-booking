@@ -25,7 +25,7 @@ const BasicModal = ({
           classNameOuter ? classNameOuter : ''
         }`}
       >
-        <button onClick={onRequestClose} className='BasicModal__Close'>
+        <button onClick={onRequestClose} className='BasicModal__Close transition-opacity hover:opacity-50'>
           <Close />
         </button>
 

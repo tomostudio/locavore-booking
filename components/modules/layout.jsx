@@ -14,5 +14,5 @@ export default function Layout({ children }) {
     }
   }, [appContext.mobileMenu]);
 
-  return <div className={`${disableView ? `pointer-events-none` : ''}`}>{children}</div>;
+  return <div className={`${disableView ? `pointer-events-none` : ''} min-h-screen`}>{children}</div>;
 }

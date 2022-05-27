@@ -1,5 +1,5 @@
-// import React, { useState } from 'react';
-// import BasicModal from '@/components/modules/basicModal';
+import React, { useState } from 'react';
+import BasicModal from '@/components/modules/basicModal';
 import Container from '@/components/modules/container';
 import Footer from '@/components/modules/footer';
 import HeaderGap from '@/components/modules/headerGap';
@@ -15,11 +15,11 @@ import Script from 'next/script';
 export default function Home({ seoAPI, footerAPI }) {
   const [seo] = seoAPI;
   const [footer] = footerAPI;
-  // const [modalData, setModalData] = useState(false);
+  const [modalData, setModalData] = useState(false);
 
-  // const closeModal = () => {
-  //   setModalData(false);
-  // };
+  const closeModal = () => {
+    setModalData(false);
+  };
 
   const RSVPinsert = () => {
     return {
@@ -83,7 +83,7 @@ export default function Home({ seoAPI, footerAPI }) {
                 </rsvp-seating-selector>
             </rsvp-step>
             <rsvp-step step-name="ContactDetails">
-            <rsvp-step-link name="Initial"> < Back</rsvp-step-link> 
+            <rsvp-step-link name="Initial">← Back</rsvp-step-link> 
               <rsvp-input label="Name" name="FirstName"></rsvp-input>
               <rsvp-input label="Surname" name="LastName"></rsvp-input>
               <rsvp-input label="Email" name="ContactEmail"></rsvp-input>
@@ -94,7 +94,7 @@ export default function Home({ seoAPI, footerAPI }) {
             </rsvp-step>
              
             <rsvp-step step-name="ConfirmInfo">
-            <rsvp-step-link name="ContactDetails"> < Back</rsvp-step-link> 
+            <rsvp-step-link name="ContactDetails"> ← Back</rsvp-step-link> 
               <div>
                 <p>You are booking for <rsvp-span name="Booking.Seats"></rsvp-span> people at <rsvp-span name="Booking.Time.Range"></rsvp-span></p>
               </div>
@@ -151,23 +151,22 @@ export default function Home({ seoAPI, footerAPI }) {
             If you have any difficulties or further questions please contact us
             on
             <FancyLink
-              className='flex transition-all hover:opacity-50 font-bold'
+              className='flex transition-all hover:opacity-50 font-bold underline decoration-black underline-offset-1'
               destination='https://wa.me/6282144956226'
               blank={true}
             >
-              <Whatsapp className='ml-2 mr-1' /> Whatsapp
-              +62 821 4495 6226
+              <Whatsapp className='ml-2 mr-1' /> WhatsApp +62 821 4495 6226
             </FancyLink>
           </p>
           <FancyLink
-            // onClick={() => setModalData(true)}
+            onClick={() => setModalData(true)}
             className='mt-8 py-4 px-6 text-sm font-bold tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl pointer-events-auto'
           >
             GROUP RESERVATION
           </FancyLink>
         </div>
 
-        {/* <BasicModal
+        <BasicModal
           isOpen={modalData}
           onRequestClose={closeModal}
           classNameModalContent={`popup`}
@@ -201,23 +200,18 @@ export default function Home({ seoAPI, footerAPI }) {
               <br />
               <span>
                 If you have any questions or would like to chat to us before
-                making a booking, please feel free to get in touch on
+                making a booking, please feel free to get in touch on 
                 <FancyLink
-                  className='inline-flex items-center'
+                  className='inline-flex items-cente font-bold underline decoration-black underline-offset-1'
                   destination='https://wa.me/6282144956226'
                   blank={true}
                 >
-                  <Whatsapp
-                    width={16}
-                    height={16}
-                    className='inline ml-2 mr-1'
-                  />
-                  WhatsApp.
+                  <Whatsapp className='ml-2 mr-1' /> WhatsApp +62 821 4495 6226
                 </FancyLink>
               </span>
             </p>
           </div>
-        </BasicModal> */}
+        </BasicModal>
       </Container>
       <Footer footer={footer} mailchimp={seo.mailchimpID} />
     </Layout>
