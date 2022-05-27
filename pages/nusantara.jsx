@@ -1,4 +1,3 @@
-import React from 'react';
 import Container from '@/components/modules/container';
 import Footer from '@/components/modules/footer';
 import HeaderGap from '@/components/modules/headerGap';
@@ -136,7 +135,7 @@ export default function Nusantara({ seoAPI, footerAPI }) {
       />
       <HeaderGap />
       <Container>
-        <main dangerouslySetInnerHTML={RSVPinsert()} />
+        <div dangerouslySetInnerHTML={RSVPinsert()} />
 
         <div className='setflex-center mb-16 mt-10'>
           <p className='flex'>

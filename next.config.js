@@ -17,7 +17,9 @@ module.exports = {
     styledComponents: true,
     removeConsole: true,
   },
+
+  productionBrowserSourceMaps: true,
   images: {
-    domains: ['cdn.sanity.io']
-  }
+    domains: ['cdn.sanity.io'],
+  },
 };

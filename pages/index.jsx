@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import BasicModal from '@/components/modules/basicModal';
+// import React, { useState } from 'react';
+// import BasicModal from '@/components/modules/basicModal';
 import Container from '@/components/modules/container';
 import Footer from '@/components/modules/footer';
 import HeaderGap from '@/components/modules/headerGap';
@@ -15,11 +15,11 @@ import Script from 'next/script';
 export default function Home({ seoAPI, footerAPI }) {
   const [seo] = seoAPI;
   const [footer] = footerAPI;
-  const [modalData, setModalData] = useState(false);
+  // const [modalData, setModalData] = useState(false);
 
-  const closeModal = () => {
-    setModalData(false);
-  };
+  // const closeModal = () => {
+  //   setModalData(false);
+  // };
 
   const RSVPinsert = () => {
     return {
@@ -144,7 +144,7 @@ export default function Home({ seoAPI, footerAPI }) {
       />
       <HeaderGap />
       <Container>
-        <main dangerouslySetInnerHTML={RSVPinsert()} />
+        <div dangerouslySetInnerHTML={RSVPinsert()} />
 
         <div className='setflex-center mb-16 mt-10'>
           <p className='flex'>
@@ -160,7 +160,7 @@ export default function Home({ seoAPI, footerAPI }) {
             </FancyLink>
           </p>
           <FancyLink
-            onClick={() => setModalData(true)}
+            // onClick={() => setModalData(true)}
             className='mt-8 py-4 px-6 text-sm font-bold tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl pointer-events-auto'
           >
             GROUP RESERVATION

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 import FancyLink from '@/components/utils/fancyLink';
 import Container from '@/components/modules/container';
 import Image from 'next/image';
@@ -26,9 +26,9 @@ export default function Header({ className = '', header, footer }) {
   //   setBNW(!headerStyle.includes('white'));
   // }, [headerStyle]);
 
-  useEffect(() => {
-    return () => {};
-  }, []);
+  // useEffect(() => {
+  //   return () => {};
+  // }, []);
 
   const MobileLink = ({
     destination,
