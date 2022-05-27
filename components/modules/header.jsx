@@ -54,27 +54,8 @@ export default function Header({ className = '', header, footer }) {
       // style={{ height: menu ? `${wHeight}px` : 'auto' }}
     >
       <header
-        initial='initial'
-        animate='enter'
-        exit='exit'
-        variants={{
-          initial: { opacity: 0 },
-          enter: {
-            opacity: 1,
-            transition: {
-              duration: 0.44,
-              ease: [0.83, 0, 0.17, 1],
-              delay: 0.05,
-            },
-          },
-          exit: {
-            opacity: 0,
-            transition: { duration: 0.25, ease: [0.83, 0, 0.17, 1] },
-          },
-        }}
         className={`sticky top-0 left-0 right-0 w-full z-2 border-b ${className}
-        border-black bg-white
-        bg-opacity-50 backdrop-filter backdrop-blur-sm
+        border-black bg-white bg-opacity-50 backdrop-filter backdrop-blur-sm
         `}
       >
         <Container

@@ -151,11 +151,11 @@ export default function Home({ seoAPI, footerAPI }) {
             If you have any difficulties or further questions please contact us
             on
             <FancyLink
-              className='flex'
+              className='flex transition-all hover:opacity-50 font-bold'
               destination='https://wa.me/6282144956226'
               blank={true}
             >
-              <Whatsapp className='ml-2 mr-1' />
+              <Whatsapp className='ml-2 mr-1' /> Whatsapp
               +62 821 4495 6226
             </FancyLink>
           </p>
@@ -167,7 +167,7 @@ export default function Home({ seoAPI, footerAPI }) {
           </FancyLink>
         </div>
 
-        <BasicModal
+        {/* <BasicModal
           isOpen={modalData}
           onRequestClose={closeModal}
           classNameModalContent={`popup`}
@@ -217,7 +217,7 @@ export default function Home({ seoAPI, footerAPI }) {
               </span>
             </p>
           </div>
-        </BasicModal>
+        </BasicModal> */}
       </Container>
       <Footer footer={footer} mailchimp={seo.mailchimpID} />
     </Layout>

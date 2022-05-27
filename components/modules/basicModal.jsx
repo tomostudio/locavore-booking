@@ -1,8 +1,7 @@
-import React from 'react'
-import Modal from 'react-modal'
-import { Close } from '../../helpers/preset/svg'
+import Modal from 'react-modal';
+import { Close } from '../../helpers/preset/svg';
 
-Modal.setAppElement('#__next')
+Modal.setAppElement('#__next');
 
 const BasicModal = ({
   children,
@@ -19,14 +18,14 @@ const BasicModal = ({
       onRequestClose={onRequestClose}
       closeTimeoutMS={closeTimeoutMS || 300}
       className={`BasicModal__Content ${classNameModalContent}`}
-      overlayClassName="BasicModal__Overlay"
+      overlayClassName='BasicModal__Overlay'
     >
       <div
         className={`BasicModal__Content--Outer ${
           classNameOuter ? classNameOuter : ''
         }`}
       >
-        <button onClick={onRequestClose} className="BasicModal__Close">
+        <button onClick={onRequestClose} className='BasicModal__Close'>
           <Close />
         </button>
 
@@ -37,7 +36,7 @@ const BasicModal = ({
         </div>
       </div>
     </Modal>
-  )
-}
+  );
+};
 
-export default BasicModal
+export default BasicModal;

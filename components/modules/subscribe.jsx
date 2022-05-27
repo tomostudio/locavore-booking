@@ -5,7 +5,7 @@ import Arrow from '../utils/arrow';
 
 const SubscribeForm = ({
   status,
-  message,
+  message = '',
   onValidated,
   className = '',
   ...props
@@ -34,18 +34,19 @@ const SubscribeForm = ({
     }
   };
 
-  let pTimeout = null;
-  const time = 4000;
-
-  const resetPlaceholderTimer = () => {
-    clearTimeout(pTimeout);
-    pTimeout = setTimeout(() => {
-      setDisable(false);
-      setRedError(false);
-      setPlaceholder('EMAIL');
-    }, time);
-  };
   useEffect(() => {
+    let pTimeout = null;
+    const time = 4000;
+
+    const resetPlaceholderTimer = () => {
+      clearTimeout(pTimeout);
+      pTimeout = setTimeout(() => {
+        setDisable(false);
+        setRedError(false);
+        setPlaceholder('EMAIL');
+      }, time);
+    };
+
     if (status === 'success') {
       // Set Success Message
       setRedError(false);

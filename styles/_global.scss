@@ -43,3 +43,62 @@ rsvp-booking-button {
 #bookingStepForm {
   @apply py-12 border border-black rounded-2xl setflex-center;
 }
+
+div.date-grid-calendar {
+  background: red;
+  & .dates {
+    --rsvp-calendar-border-radius: 20px;
+    border-radius: 20px !important;
+    & .status-round {
+      width: 20px !important;
+      height: 20px !important;
+    }
+  }
+}
+rsvp-calendar-month-status {
+  --rsvp-calendar-border-radius: 10px;
+  --rsvp-calendar-selected-border-radius: 10px;
+  --rsvp-calendar-status-round-width: 8px;
+  --rsvp-calendar-status-round-height: 8px;
+  --rsvp-calendar-background-color: #ddd;
+}
+.seating-items {
+  align-items: center;
+  justify-content: center !important;
+  & rsvp-seating-item {
+    flex: 0 1 100px;
+    & > div {
+      border-radius: 5px !important;
+      border-width: 1px;
+    }
+
+    & .limited {
+      border-color: #ffa500;
+      background: rgba(255, 165, 0, 0.2);
+    }
+    & .selected {
+      @apply transition-all;
+      --rsvp-selected-background: #222;
+      color: #fff;
+      border-color: #000;
+      &.limited {
+        color: #000;
+        border-color: #ffa500;
+        background: #ffa500;
+      }
+    }
+  }
+}
+rsvp-seating-section .limited-seats-label {
+  font-size: 14px;
+  & > span {
+    background: #ffa500;
+    width: 10px;
+    height: 10px;
+  }
+}
+
+rsvp-pax-section,
+rsvp-selector-row {
+  text-transform: capitalize !important;
+}

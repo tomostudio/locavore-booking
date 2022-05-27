@@ -9,7 +9,7 @@ export default function App({ Component, pageProps }) {
   const router = useRouter();
   return (
     <>
-      {pageProps.seoAPI && pageProps.seoAPI[0].googleID && (
+      {/* {pageProps.seoAPI && pageProps.seoAPI[0].googleID && (
         <>
           <Script
             src={`https://www.googletagmanager.com/gtag/js?id=${pageProps.seoAPI[0].googleID}`}
@@ -51,7 +51,7 @@ export default function App({ Component, pageProps }) {
             />
           </noscript>
         </>
-      )}
+      )} */}
 
       <Head>
         {/* FAVICON  */}
