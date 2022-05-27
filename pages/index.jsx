@@ -11,6 +11,7 @@ import client from '@/helpers/sanity/client';
 import Head from 'next/head';
 import Image from 'next/image';
 import Script from 'next/script';
+import WhatsappModule from '@/components/modules/whatsappModule';
 
 export default function Home({ seoAPI, footerAPI }) {
   const [seo] = seoAPI;
@@ -144,23 +145,13 @@ export default function Home({ seoAPI, footerAPI }) {
       />
       <HeaderGap />
       <Container>
-        <div dangerouslySetInnerHTML={RSVPinsert()} />
+        <div className='RSVPcontainer' dangerouslySetInnerHTML={RSVPinsert()} />
 
-        <div className='setflex-center mb-16 mt-10'>
-          <p className='flex'>
-            If you have any difficulties or further questions please contact us
-            on
-            <FancyLink
-              className='flex transition-all hover:opacity-50 font-bold underline decoration-black underline-offset-1'
-              destination='https://wa.me/6282144956226'
-              blank={true}
-            >
-              <Whatsapp className='ml-2 mr-1' /> WhatsApp +62 821 4495 6226
-            </FancyLink>
-          </p>
+        <div className='setflex-center mb-16 mt-2'>
+          <WhatsappModule />
           <FancyLink
             onClick={() => setModalData(true)}
-            className='mt-8 py-4 px-6 text-sm font-bold tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl pointer-events-auto'
+            className='mt-10 py-4 px-6 text-sm font-bold tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl pointer-events-auto'
           >
             GROUP RESERVATION
           </FancyLink>
@@ -198,17 +189,7 @@ export default function Home({ seoAPI, footerAPI }) {
               <br />
               <hr className='w-72 mx-auto' />
               <br />
-              <span>
-                If you have any questions or would like to chat to us before
-                making a booking, please feel free to get in touch on 
-                <FancyLink
-                  className='inline-flex items-cente font-bold underline decoration-black underline-offset-1'
-                  destination='https://wa.me/6282144956226'
-                  blank={true}
-                >
-                  <Whatsapp className='ml-2 mr-1' /> WhatsApp +62 821 4495 6226
-                </FancyLink>
-              </span>
+              <WhatsappModule />
             </p>
           </div>
         </BasicModal>

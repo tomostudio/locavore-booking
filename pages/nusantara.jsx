@@ -15,7 +15,7 @@ export default function Nusantara({ seoAPI, footerAPI }) {
   const RSVPinsert = () => {
     return {
       __html: `
-    <rsvp-element bookable-id="3724" api-path="restaurants">
+    <rsvp-element bookable-id="3725" api-path="restaurants">
     
     <!-- <rsvp-image></rsvp-image> -->
     <rsvp-booking-steps button-text="NEXT">

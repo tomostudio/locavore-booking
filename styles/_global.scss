@@ -15,6 +15,9 @@ main {
   }
 }
 
+.RSVPcontainer {
+}
+
 // OUTLINE
 a,
 button {
@@ -33,7 +36,7 @@ rsvp-booking-button {
 }
 
 .step-container {
-  @apply w-720px;
+  @apply max-w-3xl w-full;
 }
 
 .special-announcement {
@@ -41,7 +44,7 @@ rsvp-booking-button {
 }
 
 #bookingStepForm {
-  @apply py-12 border border-black rounded-2xl setflex-center;
+  @apply pt-10 pb-12 border border-black rounded-2xl setflex-center px-5;
 }
 
 div.date-grid-calendar {
@@ -61,6 +64,9 @@ rsvp-calendar-month-status {
   --rsvp-calendar-status-round-width: 8px;
   --rsvp-calendar-status-round-height: 8px;
   --rsvp-calendar-background-color: #ddd;
+  // Day name font Size
+  --rsvp-calendar-header-font-size: 14px;
+  --rsvp-calendar-font-size: 18px;
 }
 .seating-items {
   align-items: center;
