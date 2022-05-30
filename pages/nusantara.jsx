@@ -1,16 +1,17 @@
-import Container from '@/components/modules/container';
-import Footer from '@/components/modules/footer';
-import HeaderGap from '@/components/modules/headerGap';
-import Layout from '@/components/modules/layout';
-import FancyLink from '@/components/utils/fancyLink';
-import SEO from '@/components/utils/seo';
-import { Whatsapp } from '@/helpers/preset/svg';
-import client from '@/helpers/sanity/client';
-import Script from 'next/script';
+import Container from '@/components/modules/container'
+import Footer from '@/components/modules/footer'
+import HeaderGap from '@/components/modules/headerGap'
+import Layout from '@/components/modules/layout'
+import FancyLink from '@/components/utils/fancyLink'
+import SEO from '@/components/utils/seo'
+import { Whatsapp } from '@/helpers/preset/svg'
+import client from '@/helpers/sanity/client'
+import Script from 'next/script'
+import Image from 'next/image'
 
 export default function Nusantara({ seoAPI, footerAPI }) {
-  const [seo] = seoAPI;
-  const [footer] = footerAPI;
+  const [seo] = seoAPI
+  const [footer] = footerAPI
 
   const RSVPinsert = () => {
     return {
@@ -115,38 +116,73 @@ export default function Nusantara({ seoAPI, footerAPI }) {
           </template>
         </rsvp-booking-steps>
   </rsvp-element>`,
-    };
-  };
+    }
+  }
   return (
     <Layout>
       <SEO
-        title='Booking Nusantara'
+        title="Booking Nusantara"
         defaultSEO={typeof seo !== 'undefined' && seo.seo}
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
-      <Script src='https://js.stripe.com/v3/' />
+      <Script src="https://js.stripe.com/v3/" />
       <Script
-        type='module'
-        src='https://cdn.rsvp-popup.com/webcomponents/rsvp-elements/1.0/rsvp.esm.js'
+        type="module"
+        src="https://cdn.rsvp-popup.com/webcomponents/rsvp-elements/1.0/rsvp.esm.js"
       />
       <Script
         nomodule
-        src='https://cdn.rsvp-popup.com/webcomponents/rsvp-elements/1.0/rsvp.js'
+        src="https://cdn.rsvp-popup.com/webcomponents/rsvp-elements/1.0/rsvp.js"
       />
       <HeaderGap />
-      <Container>
+      <Container className="mt-10">
+        <div className="relative w-full h-[150px] max-w-3xl px-4 mx-auto mb-10">
+          <Image
+            src="/placeholder/nusantara.png"
+            alt="Nusantara"
+            layout="fill"
+            objectFit="contain"
+          />
+        </div>
+        <div className="relative w-full h-[500px] rounded-2xl overflow-hidden">
+          <Image
+            src="/placeholder/placeholder-nusantara.png"
+            alt="Locavore"
+            layout="fill"
+            objectFit="cover"
+            objectPosition="center"
+          />
+        </div>
+        <div className="setflex-center space-y-14 mt-16 mb-14 mx-auto text-center w-full max-w-3xl">
+          <h3 className="text-2xl font-bold">
+            AN ETHNO-CULINARY EXPERIENCE <br />
+            BY THE SAME TEAM AS LOCAVORE
+          </h3>
+          <hr className="w-full" />
+          <p>
+            ur menus at Nusantara cover certain regions of Indonesia where some
+            of the strongest recipes and culinary inspirations originate. Many
+            of our dishes are lesser-known, very local, and often not commonly
+            found outside of these regions. 
+            <br />
+            <br />
+            Key to this is our ongoing research in discovering lost recipes,
+            techniques and dishes that have been forgotten or are no longer
+            practised. Our team is bringing this back to life.
+          </p>
+        </div>
         <div dangerouslySetInnerHTML={RSVPinsert()} />
 
-        <div className='setflex-center mb-16 mt-10'>
-          <p className='flex'>
+        <div className="setflex-center mb-16 mt-10">
+          <p className="flex">
             If you have any difficulties or further questions please contact us
             on
             <FancyLink
-              className='flex'
-              destination='http://wa.me/6282146813714'
+              className="flex"
+              destination="http://wa.me/6282146813714"
               blank={true}
             >
-              <Whatsapp className='ml-2 mr-1' />
+              <Whatsapp className="ml-2 mr-1" />
               +62 821 4681 3714
             </FancyLink>
           </p>
@@ -154,7 +190,7 @@ export default function Nusantara({ seoAPI, footerAPI }) {
       </Container>
       <Footer footer={footer} mailchimp={seo.mailchimpID} />
     </Layout>
-  );
+  )
 }
 
 export async function getStaticProps() {
@@ -162,16 +198,16 @@ export async function getStaticProps() {
   *[_type == "home"] {
     issue->
   }
-  `);
+  `)
   const seoAPI = await client.fetch(`
                     *[_type == "settings"]
-                    `);
+                    `)
   const headerAPI = await client.fetch(`
                     *[_type == "header"]
-                    `);
+                    `)
   const footerAPI = await client.fetch(`
                     *[_type == "footer"]
-                    `);
+                    `)
   return {
     props: {
       seoAPI,
@@ -179,5 +215,5 @@ export async function getStaticProps() {
       homeAPI,
       headerAPI,
     },
-  };
+  }
 }

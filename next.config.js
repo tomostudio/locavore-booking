@@ -1,5 +1,4 @@
 module.exports = {
-  strictMode: true,
   webpack: (config, { dev, isServer }) => {
     // Replace React with Preact only in client production build
     if (!dev && !isServer) {
