@@ -1,26 +1,26 @@
-import React, { useState } from 'react'
-import BasicModal from '@/components/modules/basicModal'
-import Container from '@/components/modules/container'
-import Footer from '@/components/modules/footer'
-import HeaderGap from '@/components/modules/headerGap'
-import Layout from '@/components/modules/layout'
-import FancyLink from '@/components/utils/fancyLink'
-import SEO from '@/components/utils/seo'
-import { Whatsapp } from '@/helpers/preset/svg'
-import client from '@/helpers/sanity/client'
-import Head from 'next/head'
-import Image from 'next/image'
-import Script from 'next/script'
-import WhatsappModule from '@/components/modules/whatsappModule'
+import React, { useState } from 'react';
+import BasicModal from '@/components/modules/basicModal';
+import Container from '@/components/modules/container';
+import Footer from '@/components/modules/footer';
+import HeaderGap from '@/components/modules/headerGap';
+import Layout from '@/components/modules/layout';
+import FancyLink from '@/components/utils/fancyLink';
+import SEO from '@/components/utils/seo';
+import { Whatsapp } from '@/helpers/preset/svg';
+import client from '@/helpers/sanity/client';
+import Head from 'next/head';
+import Image from 'next/image';
+import Script from 'next/script';
+import WhatsappModule from '@/components/modules/whatsappModule';
 
 export default function Home({ seoAPI, footerAPI }) {
-  const [seo] = seoAPI
-  const [footer] = footerAPI
-  const [modalData, setModalData] = useState(false)
+  const [seo] = seoAPI;
+  const [footer] = footerAPI;
+  const [modalData, setModalData] = useState(false);
 
   const closeModal = () => {
-    setModalData(false)
-  }
+    setModalData(false);
+  };
 
   const RSVPinsert = () => {
     return {
@@ -125,43 +125,43 @@ export default function Home({ seoAPI, footerAPI }) {
           </template>
         </rsvp-booking-steps>
   </rsvp-element>`,
-    }
-  }
+    };
+  };
   return (
     <Layout>
       <SEO
-        title="Booking Locavore"
+        title='Booking Locavore'
         defaultSEO={typeof seo !== 'undefined' && seo.seo}
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
-      <Script src="https://js.stripe.com/v3/" />
+      <Script src='https://js.stripe.com/v3/' />
       <Script
-        type="module"
-        src="https://cdn.rsvp-popup.com/webcomponents/rsvp-elements/1.0/rsvp.esm.js"
+        type='module'
+        src='https://cdn.rsvp-popup.com/webcomponents/rsvp-elements/1.0/rsvp.esm.js'
       />
       <Script
         nomodule
-        src="https://cdn.rsvp-popup.com/webcomponents/rsvp-elements/1.0/rsvp.js"
+        src='https://cdn.rsvp-popup.com/webcomponents/rsvp-elements/1.0/rsvp.js'
       />
       <HeaderGap />
-      <Container className="mt-16">
-        <h1 className="font-sans text-center mb-16">
-          Book your Locavore experience
+      <Container>
+        <h1 className='font-sans text-center my-8 md:my-16 text-6xl md:text-8xl'>
+          Book Your Locavore Experience
         </h1>
-        <div className="relative w-full h-[500px] rounded-2xl overflow-hidden">
+        <div className='relative w-full h-[500px] rounded-2xl overflow-hidden'>
           <Image
-            src="/placeholder/placeholder-locavore.png"
-            alt="Locavore"
-            layout="fill"
-            objectFit="cover"
+            src='/placeholder/placeholder-locavore.png'
+            alt='Locavore'
+            layout='fill'
+            objectFit='cover'
           />
         </div>
-        <div className="setflex-center mx-auto text-center w-full max-w-3xl">
-          <h3 className="my-14 text-2xl font-bold">
+        <div className='setflex-center mx-auto text-center w-full max-w-3xl'>
+          <h3 className='my-14 text-2xl font-bold'>
             THE UNKNOWN: <br /> AN EDIBLE MYSTERY EXPLORED
           </h3>
           <hr className='w-full' />
-          <p className="my-14">
+          <p className='my-14'>
             Exclusively working with local ingredients is a conscious decision.
             For us chefs, it causes as many stressful sleepless nights as
             celebratory breakthroughs.
@@ -183,37 +183,38 @@ export default function Home({ seoAPI, footerAPI }) {
             <br />
             Nothing is unknown if you choose to explore it.
           </p>
-          <p className="mb-14">
+          <p className='mb-14'>
             LOCAVORE MENU <br />
             Rp 1.250.000++
-            <span className="block my-2">•</span>
+            <span className='block my-2'>•</span>
             Features animal protein,
             <br />
             Vegetarian option available on request
           </p>
-          <p className="mb-14">
+          <p className='mb-14'>
             DRINKS PAIRING <br />
-            <span className="font-serif font-medium italic">add</span> Rp
+            <span className='font-serif font-medium italic'>add</span> Rp
             550.000++
-            <span className="block my-2">•</span>
-            We offer creative drinks pairing to enhance your experience. <br/>
-            The same thought and use of ingredients applies <br/>
+            <span className='block my-2'>•</span>
+            We offer creative drinks pairing to enhance your experience. <br />
+            The same thought and use of ingredients applies <br />
             (we don’t serve wine as part of the pairing).
           </p>
           <FancyLink
-            href="#"
-            className="mb-14 py-4 px-6 text-sm font-bold tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl pointer-events-auto"
+            destination='https://drive.google.com/file/d/1myzD5qSSMm6b-XxFbPm6cM-ljO13Ps6s/view?usp=drivesdk'
+            blank={true}
+            className='mb-14 py-4 px-6 text-sm font-bold tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl pointer-events-auto'
           >
             SEE MENU
           </FancyLink>
         </div>
-        <div className="RSVPcontainer" dangerouslySetInnerHTML={RSVPinsert()} />
+        <div className='RSVPcontainer' dangerouslySetInnerHTML={RSVPinsert()} />
 
-        <div className="setflex-center mb-16 mt-2">
+        <div className='setflex-center mb-16 mt-2'>
           <WhatsappModule />
           <FancyLink
             onClick={() => setModalData(true)}
-            className="mt-10 py-4 px-6 text-sm font-bold tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl pointer-events-auto"
+            className='mt-10 py-4 px-6 text-sm font-bold tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl pointer-events-auto'
           >
             GROUP RESERVATION
           </FancyLink>
@@ -224,11 +225,11 @@ export default function Home({ seoAPI, footerAPI }) {
           onRequestClose={closeModal}
           classNameModalContent={`popup`}
         >
-          <div className="flex flex-col justify-center w-full h-full bg-white absolute-center md:justify-start md:relative md:top-auto md:left-auto md:translate-x-0 md:translate-y-0">
-            <span className="block font-bold text-lg text-center leading-tight mb-6 lg:font-bold lg:mb-8">
-              LOCALAB <span className="block mt-2">•</span>
+          <div className='flex flex-col justify-center w-full h-full bg-white absolute-center md:justify-start md:relative md:top-auto md:left-auto md:translate-x-0 md:translate-y-0'>
+            <span className='block font-bold text-lg text-center leading-tight mb-6 lg:font-bold lg:mb-8'>
+              LOCALAB <span className='block mt-2'>•</span>
             </span>
-            <p className="text-center">
+            <p className='text-center'>
               LocaLab is a food laboratory and testing kitchen which is the
               centre of Locavore’s research and development. Local ingredients
               of all kinds meet state-of-the-art techniques and the creative
@@ -240,16 +241,18 @@ export default function Home({ seoAPI, footerAPI }) {
               experience.
               <br />
               <br />
-              For booking please send us an email to
-              <span className="italic font-serif font-semibold">
+              For booking please send us an email to{" "}
+              <FancyLink
+                blank={true}
+                href={'mailto:riyan@locavore.co.id'}
+                className='italic font-serif font-semibold'
+              >
                 riyan@locavore.co.id
-              </span>
-              <br />
-              with at least <span className="font-semibold">2 days notice</span>
-              .
+              </FancyLink>{" "}with at least <span className='font-semibold'>2 days notice</span>
+.
               <br />
               <br />
-              <hr className="w-72 mx-auto" />
+              <hr className='w-72 mx-auto' />
               <br />
               <WhatsappModule />
             </p>
@@ -258,7 +261,7 @@ export default function Home({ seoAPI, footerAPI }) {
       </Container>
       <Footer footer={footer} mailchimp={seo.mailchimpID} />
     </Layout>
-  )
+  );
 }
 
 export async function getStaticProps() {
@@ -266,16 +269,16 @@ export async function getStaticProps() {
   *[_type == "home"] {
     issue->
   }
-  `)
+  `);
   const seoAPI = await client.fetch(`
                     *[_type == "settings"]
-                    `)
+                    `);
   const headerAPI = await client.fetch(`
                     *[_type == "header"]
-                    `)
+                    `);
   const footerAPI = await client.fetch(`
                     *[_type == "footer"]
-                    `)
+                    `);
   return {
     props: {
       seoAPI,
@@ -283,5 +286,5 @@ export async function getStaticProps() {
       homeAPI,
       headerAPI,
     },
-  }
+  };
 }

@@ -4,10 +4,12 @@ import FancyLink from '../utils/fancyLink';
 
 export default function WhatsappModule() {
   return (
-    <p className='text-center flex flex-col items-center md:flex-row max-w-md md:max-w-none'>
-      If you have any difficulties or further questions please contact us on
+    <p className='text-center max-w-md md:max-w-none flex flex-row flex-wrap justify-center'>
+      <span className={``}>
+        If you have any difficulties or further questions please contact us on
+      </span>
       <FancyLink
-        className='flex transition-all hover:opacity-50 font-bold underline decoration-black underline-offset-1'
+        className='inline-flex transition-all hover:opacity-50 font-bold underline decoration-black underline-offset-1 mt-[1px]'
         destination='https://wa.me/6282144956226'
         blank={true}
       >

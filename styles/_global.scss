@@ -96,9 +96,11 @@ rsvp-calendar-month-status {
   }
 }
 rsvp-seating-section .limited-seats-label {
+  text-align: center;
   font-size: 14px;
   & > span {
     background: #ffa500;
+    border-radius: 2px;
     width: 10px;
     height: 10px;
   }
