@@ -210,7 +210,7 @@ export default function Home({ seoAPI, footerAPI }) {
         </div>
         <div className='RSVPcontainer' dangerouslySetInnerHTML={RSVPinsert()} />
 
-        <div className='setflex-center mb-16 mt-2'>
+        <div className='setflex-center mb-16 mt-2 max-w-3xl mx-auto'>
           <WhatsappModule />
           <FancyLink
             onClick={() => setModalData(true)}
