@@ -201,7 +201,7 @@ export default function Home({ seoAPI, footerAPI }) {
             (we don’t serve wine as part of the pairing).
           </p>
           <FancyLink
-            destination='https://drive.google.com/file/d/1myzD5qSSMm6b-XxFbPm6cM-ljO13Ps6s/view?usp=drivesdk'
+            destination='https://drive.google.com/file/d/1jDczxw_A6JkwRqf91ZgvniGbz2yJnxfX/view?usp=sharing'
             blank={true}
             className='mb-14 py-4 px-6 text-sm font-bold tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl pointer-events-auto'
           >
@@ -211,12 +211,15 @@ export default function Home({ seoAPI, footerAPI }) {
         <div className='RSVPcontainer' dangerouslySetInnerHTML={RSVPinsert()} />
 
         <div className='setflex-center mb-16 mt-2 max-w-3xl mx-auto'>
-          <WhatsappModule />
+          <WhatsappModule
+            whatsappLink={'http://wa.me/6282144956226'}
+            whatsappText={'+62 821 4495 6226'}
+          />
           <FancyLink
             onClick={() => setModalData(true)}
             className='mt-10 py-4 px-6 text-sm font-bold tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl pointer-events-auto'
           >
-            GROUP RESERVATION
+            GROUP RESERVATIONS
           </FancyLink>
         </div>
 
@@ -241,20 +244,24 @@ export default function Home({ seoAPI, footerAPI }) {
               experience.
               <br />
               <br />
-              For booking please send us an email to{" "}
+              For booking please send us an email to{' '}
               <FancyLink
                 blank={true}
                 href={'mailto:riyan@locavore.co.id'}
                 className='italic font-serif font-semibold'
               >
                 riyan@locavore.co.id
-              </FancyLink>{" "}with at least <span className='font-semibold'>2 days notice</span>
-.
+              </FancyLink>{' '}
+              with at least <span className='font-semibold'>2 days notice</span>
+              .
               <br />
               <br />
               <hr className='w-72 mx-auto' />
               <br />
-              <WhatsappModule />
+              <WhatsappModule
+                whatsappLink={'http://wa.me/6282144956226'}
+                whatsappText={'+62 821 4495 6226'}
+              />
             </p>
           </div>
         </BasicModal>

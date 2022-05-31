@@ -137,15 +137,19 @@ export default function Nusantara({ seoAPI, footerAPI }) {
       />
       <HeaderGap />
       <Container className='mt-10'>
-        <div className='relative w-full h-[150px] max-w-3xl px-4 mx-auto mb-10'>
+        {/* <div className='relative w-full h-[150px] max-w-3xl px-4 mx-auto mb-10'>
           <Image
             src='/placeholder/nusantara.png'
             alt='Nusantara'
             layout='fill'
             objectFit='contain'
           />
-        </div>
-        <div className='relative w-full h-[500px] rounded-2xl overflow-hidden'>
+        </div> */}
+
+        <h1 className='font-sans text-center my-8 md:my-16 text-6xl md:text-8xl'>
+          Book Your Table at Nusantara
+        </h1>
+        <div className='relative w  full h-[500px] rounded-2xl overflow-hidden'>
           <Image
             src='/placeholder/placeholder-nusantara.png'
             alt='Locavore'
@@ -161,7 +165,7 @@ export default function Nusantara({ seoAPI, footerAPI }) {
           </h3>
           <hr className='w-full' />
           <p>
-            ur menus at Nusantara cover certain regions of Indonesia where some
+            Our menus at Nusantara cover certain regions of Indonesia where some
             of the strongest recipes and culinary inspirations originate. Many
             of our dishes are lesser-known, very local, and often not commonly
             found outside of these regions.
@@ -172,7 +176,7 @@ export default function Nusantara({ seoAPI, footerAPI }) {
             practised. Our team is bringing this back to life.
           </p>
           <FancyLink
-            destination='https://drive.google.com/file/d/1zayMsjWq9qmde2k1MBV2DDEn9zGZIRq5/view?usp=drivesdk'
+            destination='https://drive.google.com/file/d/18pXtaI-QQgTDCREOvmDEmRTw6Re6a0gu/view?usp=sharing'
             blank={true}
             className='mb-14 py-4 px-6 text-sm font-bold tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl pointer-events-auto'
           >
@@ -182,7 +186,8 @@ export default function Nusantara({ seoAPI, footerAPI }) {
         <div dangerouslySetInnerHTML={RSVPinsert()} />
 
         <div className='setflex-center mb-16 mt-2 max-w-3xl mx-auto'>
-        <WhatsappModule /></div>
+          <WhatsappModule whatsappLink="http://wa.me/6282146813714" whatsappText="+62 821 4681 3714"/>
+        </div>
       </Container>
       <Footer footer={footer} mailchimp={seo.mailchimpID} />
     </Layout>
