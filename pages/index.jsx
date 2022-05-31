@@ -157,33 +157,31 @@ export default function Home({ seoAPI, footerAPI }) {
           />
         </div>
         <div className='setflex-center mx-auto text-center w-full max-w-3xl'>
-          <h3 className='my-14 text-2xl font-bold'>
+          <h3 className='my-8 text-2xl font-bold'>
             THE UNKNOWN: <br /> AN EDIBLE MYSTERY EXPLORED
           </h3>
           <hr className='w-full' />
-          <p className='my-14'>
+          <div className='my-8 space-y-4'>
+            <p>
             Exclusively working with local ingredients is a conscious decision.
             For us chefs, it causes as many stressful sleepless nights as
-            celebratory breakthroughs.
-            <br />
-            <br />
+            celebratory breakthroughs.</p>
+            <p>
             One of our adventures is exploring every part of an ingredient. If
             you commonly just use the seed of a plant, don’t you wonder what the
-            leaf and fruit taste like too?
-            <br />
-            <br />
+            leaf and fruit taste like too?</p>
+            <p>
             That is what we call the ‘winding road’ and it’s an adventure every
-            time, irrespective of the destination.
-            <br />
-            <br />
+            time, irrespective of the destination.</p>
+            <p>
             This season we want to take the unknown, take the path less
             travelled, use the parts others throw away, and create our own
-            ingredient story.
-            <br />
-            <br />
+            ingredient story.</p>
+            <p>
             Nothing is unknown if you choose to explore it.
-          </p>
-          <p className='mb-14'>
+            </p>
+          </div>
+          <p className='mb-8'>
             LOCAVORE MENU <br />
             Rp 1.250.000++
             <span className='block my-2'>•</span>
@@ -191,7 +189,7 @@ export default function Home({ seoAPI, footerAPI }) {
             <br />
             Vegetarian option available on request
           </p>
-          <p className='mb-14'>
+          <p className='mb-8'>
             DRINKS PAIRING <br />
             <span className='font-serif font-medium italic'>add</span> Rp
             550.000++
@@ -203,7 +201,7 @@ export default function Home({ seoAPI, footerAPI }) {
           <FancyLink
             destination='https://drive.google.com/file/d/1jDczxw_A6JkwRqf91ZgvniGbz2yJnxfX/view?usp=sharing'
             blank={true}
-            className='mb-14 py-4 px-6 text-sm font-bold tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl pointer-events-auto'
+            className='mb-4 py-4 px-6 text-sm font-bold tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl pointer-events-auto'
           >
             SEE MENU
           </FancyLink>

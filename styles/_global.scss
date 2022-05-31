@@ -73,6 +73,8 @@ rsvp-calendar-month-status {
   justify-content: center !important;
   & rsvp-seating-item {
     flex: 0 1 100px;
+    text-align: center;
+    padding: 2px;
     & > div {
       border-radius: 5px !important;
       border-width: 1px;

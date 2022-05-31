@@ -158,27 +158,29 @@ export default function Nusantara({ seoAPI, footerAPI }) {
             objectPosition='center'
           />
         </div>
-        <div className='setflex-center space-y-14 mt-16 mb-14 mx-auto text-center w-full max-w-3xl'>
+        <div className='setflex-center space-y-8 mt-8 mb-8 mx-auto text-center w-full max-w-3xl'>
           <h3 className='text-2xl font-bold'>
             AN ETHNO-CULINARY EXPERIENCE <br />
             BY THE SAME TEAM AS LOCAVORE
           </h3>
           <hr className='w-full' />
-          <p>
-            Our menus at Nusantara cover certain regions of Indonesia where some
-            of the strongest recipes and culinary inspirations originate. Many
-            of our dishes are lesser-known, very local, and often not commonly
-            found outside of these regions.
-            <br />
-            <br />
-            Key to this is our ongoing research in discovering lost recipes,
-            techniques and dishes that have been forgotten or are no longer
-            practised. Our team is bringing this back to life.
-          </p>
+          <div className='space-y-4'>
+            <p>
+              Our menus at Nusantara cover certain regions of Indonesia where
+              some of the strongest recipes and culinary inspirations originate.
+              Many of our dishes are lesser-known, very local, and often not
+              commonly found outside of these regions.
+            </p>
+            <p>
+              Key to this is our ongoing research in discovering lost recipes,
+              techniques and dishes that have been forgotten or are no longer
+              practised. Our team is bringing this back to life.
+            </p>
+          </div>
           <FancyLink
             destination='https://drive.google.com/file/d/18pXtaI-QQgTDCREOvmDEmRTw6Re6a0gu/view?usp=sharing'
             blank={true}
-            className='mb-14 py-4 px-6 text-sm font-bold tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl pointer-events-auto'
+            className='mb-8 py-4 px-6 text-sm font-bold tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl pointer-events-auto'
           >
             SEE MENU
           </FancyLink>
@@ -186,7 +188,10 @@ export default function Nusantara({ seoAPI, footerAPI }) {
         <div dangerouslySetInnerHTML={RSVPinsert()} />
 
         <div className='setflex-center mb-16 mt-2 max-w-3xl mx-auto'>
-          <WhatsappModule whatsappLink="http://wa.me/6282146813714" whatsappText="+62 821 4681 3714"/>
+          <WhatsappModule
+            whatsappLink='http://wa.me/6282146813714'
+            whatsappText='+62 821 4681 3714'
+          />
         </div>
       </Container>
       <Footer footer={footer} mailchimp={seo.mailchimpID} />
