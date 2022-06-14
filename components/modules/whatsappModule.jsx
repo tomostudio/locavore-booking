@@ -6,7 +6,7 @@ const WhatsappModule = ({ whatsappLink = '/', whatsappText = '' }) => {
   return (
     <>
       {/* // <p className='text-center max-w-md md:max-w-none flex flex-row flex-wrap justify-center'> */}
-      <p className='text-center max-w-md md:max-w-none leading-relaxed'>
+      <p className='text-center max-w-md md:max-w-none leading-relaxed mx-auto'>
         <span className={``}>
           If you have any questions or would like to chat to us before making a
           booking, please feel free to get in touch on

@@ -4,45 +4,41 @@ $black: #000;
 $primary: #175ba7;
 $skyBlue: #d1f1ff;
 
+.ReactModal__Body--open {
+  overflow: hidden;
+}
+
 // BASIC MODAL
 .BasicModal__Content::-webkit-scrollbar {
-  display: none; /* for Chrome, Safari, and Opera */
+  // display: none; /* for Chrome, Safari, and Opera */
 }
+
 .BasicModal__Content {
+  margin: auto;
   width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  overflow: auto;
+  height: auto;
   outline: none;
+  position: relative;
 
   @media (min-width: 768px) {
-    max-width: calc(100% - 160px);
-    max-height: calc(100% - 160px);
     height: auto;
     border-radius: 20px;
-
-    &.popup {
-        @apply bg-white border border-black rounded-2xl w-[900px];
-    }
-    &.cooking {
-      height: calc(100% - 100px);
-      border-radius: 20px;
-      -ms-overflow-style: none; /* for Internet Explorer, Edge */
-      scrollbar-width: none; /* for Firefox */
-    }
   }
 
   @media (min-width: 1024px) {
-    max-width: calc(100% - 240px);
-    max-height: 750px;
+    max-width: 1000px;
   }
 }
 
 .BasicModal__Content--Outer {
-  padding: 80px 30px 50px;
+  position: relative;
+  padding: 60px 30px 100px;
+  @apply bg-white;
+
+  @media (min-width: 768px) {
+    @apply bg-white border border-black rounded-2xl;
+    padding: 40px 60px;
+  }
 
   @media (min-width: 1024px) {
     padding: 65px 85px;
@@ -57,16 +53,29 @@ $skyBlue: #d1f1ff;
   right: 0;
   bottom: 0;
   padding: 0;
-  background: $overlayBackground;
   z-index: 100;
+  height: 100vh;
+  overflow: auto;
+  @apply flex justify-center;
+  padding: 0px;
+
+  @media (max-width: 768px) {
+    background: white;
+  }
+  @media (min-width: 768px) {
+    padding: 40px;
+  }
 }
 
 .BasicModal__Close {
   width: 24px;
   height: 24px;
   position: absolute;
-  top: 30px;
-  right: 20px;
+  top: auto;
+  bottom: 40px;
+  right: auto;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 1;
 
   > svg {
@@ -74,6 +83,11 @@ $skyBlue: #d1f1ff;
   }
 
   @media (min-width: 768px) {
+    transform: none;
+    left: auto;
+    bottom: auto;
+    top: 30px;
+    right: 30px;
     width: 16px;
     height: 16px;
     color: black;
@@ -86,5 +100,34 @@ $skyBlue: #d1f1ff;
   @media (min-width: 1024px) {
     top: 40px;
     right: 40px;
+  }
+}
+
+// Transition
+.ReactModal__Overlay {
+  background: rgba(255, 255, 255, 0);
+  transition: background 250ms ease-in-out;
+  & .ReactModal__Content {
+    opacity: 0;
+    transition: opacity 250ms ease-in-out;
+  }
+}
+
+.ReactModal__Overlay--after-open {
+  background: rgba(255, 255, 255, 0.6);
+  @media (max-width: 768px) {
+    background: rgba(255, 255, 255, 1);
+  }
+  & .ReactModal__Content {
+    opacity: 1;
+    transition: opacity 250ms 100ms ease-in-out;
+  }
+}
+
+.ReactModal__Overlay--before-close {
+  background: rgba(255, 255, 255, 0);
+  & .ReactModal__Content {
+    opacity: 0;
+    transition: opacity 250ms 0ms ease-in-out;
   }
 }
