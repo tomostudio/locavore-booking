@@ -324,7 +324,7 @@ export default function Nusantara({ seoAPI, footerAPI }) {
               </p>
             </div>
             <p className="text-center mt-6 lg:mx-auto lg:w-[600px]">
-              <hr className="w-full lg:w-72 mx-auto mt-6 mb-6" />
+              <hr className="w-full lg:w-72 mx-auto mb-6" />
               <WhatsappModule
                 description="If you have any questions or would like to chat to us before booking, you can email"
                 email="wayan@locavore.co.id"
