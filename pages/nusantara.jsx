@@ -199,6 +199,8 @@ export default function Nusantara({ seoAPI, footerAPI }) {
 
         <div className="setflex-center mb-16 mt-2 max-w-3xl mx-auto">
           <WhatsappModule
+            description="If you have any questions or would like to chat to us before making a
+          booking, please feel free to get in touch on"
             whatsappLink="http://wa.me/6282146813714"
             whatsappText="+62 821 4681 3714"
           />
@@ -242,6 +244,8 @@ export default function Nusantara({ seoAPI, footerAPI }) {
               for more information.
               <hr className="w-full lg:w-72 mx-auto mt-6 mb-6" />
               <WhatsappModule
+                description="If you have any questions or would like to chat to us before making a
+              booking, please feel free to get in touch on"
                 whatsappLink="http://wa.me/6282146813714"
                 whatsappText="+62 821 4681 3714"
               />
@@ -320,19 +324,10 @@ export default function Nusantara({ seoAPI, footerAPI }) {
               </p>
             </div>
             <p className="text-center mt-6 lg:mx-auto lg:w-[600px]">
-              Treat someone special to a memorable dining experience at
-              Restaurant Locavore with Gift Vouchers for our tasting menu and
-              matching beverage pairing. Contact{' '}
-              <FancyLink
-                blank={true}
-                href={'mailto:wayan@locavore.co.id'}
-                className="italic font-serif font-semibold text-lg"
-              >
-                wayan@locavore.co.id
-              </FancyLink>{' '}
-              for more information.
               <hr className="w-full lg:w-72 mx-auto mt-6 mb-6" />
               <WhatsappModule
+                description="If you have any questions or would like to chat to us before booking, you can email"
+                email="wayan@locavore.co.id"
                 whatsappLink="http://wa.me/6282146813714"
                 whatsappText="+62 821 4681 3714"
               />

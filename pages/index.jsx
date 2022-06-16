@@ -226,6 +226,8 @@ export default function Home({ seoAPI, footerAPI }) {
             </FancyLink>
           </p>
           <WhatsappModule
+            description="If you have any questions or would like to chat to us before making a
+          booking, please feel free to get in touch on"
             whatsappLink={'http://wa.me/6282144956226'}
             whatsappText={'+62 821 4495 6226'}
           />
@@ -313,6 +315,8 @@ export default function Home({ seoAPI, footerAPI }) {
               for more information.
               <hr className="w-full lg:w-72 mx-auto mt-6 mb-6" />
               <WhatsappModule
+                description="If you have any questions or would like to chat to us before making a
+                booking, please feel free to get in touch on"
                 whatsappLink={'http://wa.me/6282144956226'}
                 whatsappText={'+62 821 4495 6226'}
               />
