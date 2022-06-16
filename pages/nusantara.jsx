@@ -1,29 +1,29 @@
-import React, { useState, useEffect } from 'react'
-import Container from '@/components/modules/container'
-import Footer from '@/components/modules/footer'
-import HeaderGap from '@/components/modules/headerGap'
-import Layout from '@/components/modules/layout'
-import FancyLink from '@/components/utils/fancyLink'
-import SEO from '@/components/utils/seo'
-import { Whatsapp } from '@/helpers/preset/svg'
-import client from '@/helpers/sanity/client'
-import Script from 'next/script'
-import Image from 'next/image'
-import WhatsappModule from '@/components/modules/whatsappModule'
-import BasicModal from '@/components/modules/basicModal'
+import React, { useState, useEffect } from 'react';
+import Container from '@/components/modules/container';
+import Footer from '@/components/modules/footer';
+import HeaderGap from '@/components/modules/headerGap';
+import Layout from '@/components/modules/layout';
+import FancyLink from '@/components/utils/fancyLink';
+import SEO from '@/components/utils/seo';
+import { Whatsapp } from '@/helpers/preset/svg';
+import client from '@/helpers/sanity/client';
+import Script from 'next/script';
+import Image from 'next/image';
+import WhatsappModule from '@/components/modules/whatsappModule';
+import BasicModal from '@/components/modules/basicModal';
 
 export default function Nusantara({ seoAPI, footerAPI }) {
-  const [seo] = seoAPI
-  const [footer] = footerAPI
-  const [modalData, setModalData] = useState('')
+  const [seo] = seoAPI;
+  const [footer] = footerAPI;
+  const [modalData, setModalData] = useState('');
 
   const closeModal = () => {
-    setModalData('')
-  }
+    setModalData('');
+  };
 
   useEffect(() => {
-    window.scroll(0, 0)
-  }, [])
+    window.scroll(0, 0);
+  }, []);
   const RSVPinsert = () => {
     return {
       __html: `
@@ -127,26 +127,26 @@ export default function Nusantara({ seoAPI, footerAPI }) {
           </template>
         </rsvp-booking-steps>
   </rsvp-element>`,
-    }
-  }
+    };
+  };
   return (
     <Layout>
       <SEO
-        title="Booking Nusantara"
+        title='Booking Nusantara'
         defaultSEO={typeof seo !== 'undefined' && seo.seo}
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
-      <Script src="https://js.stripe.com/v3/" />
+      <Script src='https://js.stripe.com/v3/' />
       <Script
-        type="module"
-        src="https://cdn.rsvp-popup.com/webcomponents/rsvp-elements/1.0/rsvp.esm.js"
+        type='module'
+        src='https://cdn.rsvp-popup.com/webcomponents/rsvp-elements/1.0/rsvp.esm.js'
       />
       <Script
         nomodule
-        src="https://cdn.rsvp-popup.com/webcomponents/rsvp-elements/1.0/rsvp.js"
+        src='https://cdn.rsvp-popup.com/webcomponents/rsvp-elements/1.0/rsvp.js'
       />
       <HeaderGap />
-      <Container className="mt-10">
+      <Container className='mt-10'>
         {/* <div className='relative w-full h-[150px] max-w-3xl px-4 mx-auto mb-10'>
           <Image
             src='/placeholder/nusantara.png'
@@ -156,25 +156,25 @@ export default function Nusantara({ seoAPI, footerAPI }) {
           />
         </div> */}
 
-        <h1 className="font-sans text-center my-8 md:my-16 text-6xl md:text-8xl">
+        <h1 className='font-sans text-center my-8 md:my-16 text-6xl md:text-8xl'>
           Book Your Table at Nusantara
         </h1>
-        <div className="relative w  full h-[500px] rounded-2xl overflow-hidden">
+        <div className='relative w  full h-[500px] rounded-2xl overflow-hidden'>
           <Image
-            src="/placeholder/placeholder-nusantara.png"
-            alt="Locavore"
-            layout="fill"
-            objectFit="cover"
-            objectPosition="center"
+            src='/placeholder/placeholder-nusantara.png'
+            alt='Locavore'
+            layout='fill'
+            objectFit='cover'
+            objectPosition='center'
           />
         </div>
-        <div className="setflex-center space-y-8 mt-8 mb-8 mx-auto text-center w-full max-w-3xl">
-          <h3 className="text-2xl font-bold">
+        <div className='setflex-center space-y-8 mt-8 mb-8 mx-auto text-center w-full max-w-3xl'>
+          <h3 className='text-2xl font-bold'>
             AN ETHNO-CULINARY EXPERIENCE <br />
             BY THE SAME TEAM AS LOCAVORE
           </h3>
-          <hr className="w-full" />
-          <div className="space-y-4">
+          <hr className='w-full' />
+          <div className='space-y-4'>
             <p>
               Our menus at Nusantara cover certain regions of Indonesia where
               some of the strongest recipes and culinary inspirations originate.
@@ -188,32 +188,32 @@ export default function Nusantara({ seoAPI, footerAPI }) {
             </p>
           </div>
           <FancyLink
-            destination="https://drive.google.com/file/d/18pXtaI-QQgTDCREOvmDEmRTw6Re6a0gu/view?usp=sharing"
+            destination='https://drive.google.com/file/d/18pXtaI-QQgTDCREOvmDEmRTw6Re6a0gu/view?usp=sharing'
             blank={true}
-            className="mb-8 py-4 px-6 text-sm font-bold tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl pointer-events-auto"
+            className='mb-8 py-4 px-6 text-sm font-bold tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl pointer-events-auto'
           >
             SEE MENU
           </FancyLink>
         </div>
         <div dangerouslySetInnerHTML={RSVPinsert()} />
 
-        <div className="setflex-center mb-16 mt-2 max-w-3xl mx-auto">
+        <div className='setflex-center mb-16 mt-2 max-w-3xl mx-auto'>
           <WhatsappModule
-            description="If you have any questions or would like to chat to us before making a
-          booking, please feel free to get in touch on"
-            whatsappLink="http://wa.me/6282146813714"
-            whatsappText="+62 821 4681 3714"
+            description='If you have any questions or would like to chat to us before making a
+          booking, please feel free to get in touch on'
+            whatsappLink='http://wa.me/6282146813714'
+            whatsappText='+62 821 4681 3714'
           />
-          <div className="flex mt-10 space-x-6">
+          <div className='flex mt-10 space-x-6'>
             <FancyLink
               onClick={() => setModalData('gift')}
-              className="py-4 px-6 text-sm font-bold tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl pointer-events-auto"
+              className='py-4 px-6 text-sm font-bold tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl pointer-events-auto'
             >
               GIFT VOUCHERS
             </FancyLink>
             <FancyLink
               onClick={() => setModalData('cooking')}
-              className="py-4 px-6 text-sm font-bold tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl pointer-events-auto"
+              className='py-4 px-6 text-sm font-bold tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl pointer-events-auto'
             >
               COOKING CLASS
             </FancyLink>
@@ -224,33 +224,33 @@ export default function Nusantara({ seoAPI, footerAPI }) {
           onRequestClose={closeModal}
           classNameModalContent={`popup`}
         >
-          <div className="flex flex-col justify-center w-full h-full bg-white absolute-center md:justify-start md:relative md:top-auto md:left-auto md:translate-x-0 md:translate-y-0">
-            <hr className="block lg:hidden w-full mx-auto mb-6" />
-            <span className="block uppercase font-bold text-lg text-center leading-tight mb-6 lg:font-bold lg:mb-8">
+          <div className='flex flex-col justify-center w-full h-full bg-white absolute-center md:justify-start md:relative md:top-auto md:left-auto md:translate-x-0 md:translate-y-0'>
+            <hr className='block lg:hidden w-full mx-auto mb-8' />
+            <span className='block uppercase font-bold text-lg text-center leading-tight mb-8 lg:font-bold lg:mb-8'>
               Buy Gift Vouchers
-              <span className="block mt-2">•</span>
+              <span className='block mt-2'>•</span>
             </span>
-            <p className="text-center">
+            <p className='text-center'>
               Treat someone special to a memorable dining experience at
               Restaurant Locavore with Gift Vouchers for our tasting menu and
               matching beverage pairing. Contact{' '}
               <FancyLink
                 blank={true}
                 href={'mailto:wayan@locavore.co.id'}
-                className="italic font-serif font-semibold text-lg"
+                className='italic font-serif font-semibold text-lg'
               >
                 wayan@locavore.co.id
               </FancyLink>{' '}
               for more information.
-              <hr className="w-full lg:w-72 mx-auto mt-6 mb-6" />
+              <hr className='w-full lg:w-72 mx-auto mt-8 mb-8' />
               <WhatsappModule
-                description="If you have any questions or would like to chat to us before making a
-              booking, please feel free to get in touch on"
-                whatsappLink="http://wa.me/6282146813714"
-                whatsappText="+62 821 4681 3714"
+                description='If you have any questions or would like to chat to us before making a
+              booking, please feel free to get in touch on'
+                whatsappLink='http://wa.me/6282146813714'
+                whatsappText='+62 821 4681 3714'
               />
             </p>
-            <hr className="block lg:hidden w-full mx-auto mt-6" />
+            <hr className='block lg:hidden w-full mx-auto mt-8' />
           </div>
         </BasicModal>
         <BasicModal
@@ -258,14 +258,13 @@ export default function Nusantara({ seoAPI, footerAPI }) {
           onRequestClose={closeModal}
           classNameModalContent={`popup cooking`}
         >
-          <div className="flex flex-col justify-center w-full h-full bg-white absolute-center md:justify-start md:relative md:top-auto md:left-auto md:translate-x-0 md:translate-y-0">
-            <hr className="block lg:hidden w-full lg:w-72 mx-auto mb-6" />
-            <span className="block uppercase font-bold text-lg text-center leading-tight mb-6 lg:font-bold lg:mb-8">
+          <div className='flex flex-col justify-center w-full h-full bg-white absolute-center md:justify-start md:relative md:top-auto md:left-auto md:translate-x-0 md:translate-y-0'>
+            <span className='block uppercase font-bold text-lg text-center leading-tight mb-6 lg:font-bold lg:mb-8'>
               NUSANTARA COOKING CLASS
-              <span className="block mt-2">•</span>
+              <span className='block mt-4'>•</span>
             </span>
-            <p className="text-center lg:mx-auto lg:w-[600px]">
-              <span className="block font-bold mb-3">
+            <p className='text-center lg:mx-auto lg:w-[600px]'>
+              <span className='block font-bold mb-3'>
                 Book a Culinary Adventure
               </span>
               Every Tuesday and Friday, our chef Putu teaches the craft of
@@ -274,11 +273,11 @@ export default function Nusantara({ seoAPI, footerAPI }) {
               or as a special gift for someone else.
               <br />
               <br />
-              <hr className="w-full lg:w-72 mx-auto" />
+              <hr className='w-full max-w-xl lg:w-72 mx-auto' />
             </p>
-            <div className="flex flex-col lg:flex-row lg:space-x-8 mt-6 lg:mt-8">
-              <p className="text-center w-full">
-                <span className="block font-bold">THE MORNING ADVENTURE</span>
+            <div className='flex flex-col lg:flex-row lg:space-x-8 mt-8 lg:mt-8'>
+              <p className='text-center w-full'>
+                <span className='block font-bold'>THE MORNING ADVENTURE</span>
                 Rp. 595.000++ per person
                 <br />
                 <br />
@@ -298,8 +297,9 @@ export default function Nusantara({ seoAPI, footerAPI }) {
                 All followed up with a feast of everything you’ve prepared (and
                 more!) in our dining room.
               </p>
-              <p className="text-center w-full">
-                <span className="block font-bold">THE FULL ADVENTURE</span>
+              <hr className='w-full my-8 max-w-xl lg:w-72 mx-auto lg:hidden' />
+              <p className='text-center w-full'>
+                <span className='block font-bold'>THE FULL ADVENTURE</span>
                 Rp. 995.000++ per person
                 <br />
                 <br />
@@ -323,22 +323,22 @@ export default function Nusantara({ seoAPI, footerAPI }) {
                 more!) in our dining room.
               </p>
             </div>
-            <p className="text-center mt-6 lg:mx-auto lg:w-[600px]">
-              <hr className="w-full lg:w-72 mx-auto mb-6" />
+            <p className='text-center mt-8 lg:mx-auto lg:w-[600px]'>
+              <hr className='w-full max-w-xl  lg:w-72 mx-auto mb-8' />
               <WhatsappModule
-                description="If you have any questions or would like to chat to us before booking, you can email"
-                email="wayan@locavore.co.id"
-                whatsappLink="http://wa.me/6282146813714"
-                whatsappText="+62 821 4681 3714"
+                description='If you have any questions or would like to chat to us before booking, you can email'
+                email='wayan@locavore.co.id'
+                whatsappLink='http://wa.me/6282146813714'
+                whatsappText='+62 821 4681 3714'
               />
+              <hr className='w-full max-w-xl lg:hidden lg:w-72 mx-auto mt-8' />
             </p>
-            <hr className="block lg:hidden w-full lg:w-72 mx-auto mt-6" />
           </div>
         </BasicModal>
       </Container>
       <Footer footer={footer} mailchimp={seo.mailchimpID} />
     </Layout>
-  )
+  );
 }
 
 export async function getStaticProps() {
@@ -346,16 +346,16 @@ export async function getStaticProps() {
   *[_type == "home"] {
     issue->
   }
-  `)
+  `);
   const seoAPI = await client.fetch(`
                     *[_type == "settings"]
-                    `)
+                    `);
   const headerAPI = await client.fetch(`
                     *[_type == "header"]
-                    `)
+                    `);
   const footerAPI = await client.fetch(`
                     *[_type == "footer"]
-                    `)
+                    `);
   return {
     props: {
       seoAPI,
@@ -363,5 +363,5 @@ export async function getStaticProps() {
       homeAPI,
       headerAPI,
     },
-  }
+  };
 }
