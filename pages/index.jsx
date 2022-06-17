@@ -269,7 +269,7 @@ export default function Home({ seoAPI, footerAPI }) {
               experience.
               <br />
               <br />
-              For booking please send us an email to{' '}
+              For bookings please send us an email to{' '}
               <FancyLink
                 blank={true}
                 href={'mailto:riyan@locavore.co.id'}
