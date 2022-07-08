@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
-import BasicModal from '@/components/modules/basicModal'
 import Container from '@/components/modules/container'
 import Footer from '@/components/modules/footer'
 import HeaderGap from '@/components/modules/headerGap'
@@ -9,17 +7,16 @@ import FancyLink from '@/components/utils/fancyLink'
 import SEO from '@/components/utils/seo'
 import { Whatsapp } from '@/helpers/preset/svg'
 import client from '@/helpers/sanity/client'
-import Head from 'next/head'
-import Image from 'next/image'
 import Script from 'next/script'
+import Image from 'next/image'
 import WhatsappModule from '@/components/modules/whatsappModule'
+import BasicModal from '@/components/modules/basicModal'
 import urlFor from '@/helpers/sanity/urlFor'
 import EditorComponent from '@/components/modules/editorComponent'
 import EditorPopupComponent from '@/components/modules/editorPopupComponent'
 
-export default function Home({ seoAPI, homeAPI, footerAPI }) {
-  const router = useRouter()
-  const [home] = homeAPI
+export default function Nusantara({ seoAPI, footerAPI, bookingAPI }) {
+  const [booking] = bookingAPI
   const [seo] = seoAPI
   const [footer] = footerAPI
   const [modalData, setModalData] = useState('')
@@ -34,7 +31,7 @@ export default function Home({ seoAPI, homeAPI, footerAPI }) {
   const RSVPinsert = () => {
     return {
       __html: `
-    <rsvp-element bookable-id="${home.rsvp.id}" api-path="${home.rsvp.path}">
+    <rsvp-element bookable-id="${booking.rsvp.id}" api-path="${booking.rsvp.path}">
     
     <!-- <rsvp-image></rsvp-image> -->
     <rsvp-booking-steps button-text="NEXT">
@@ -93,7 +90,7 @@ export default function Home({ seoAPI, homeAPI, footerAPI }) {
                 </rsvp-seating-selector>
             </rsvp-step>
             <rsvp-step step-name="ContactDetails">
-            <rsvp-step-link name="Initial">← Back</rsvp-step-link> 
+            <rsvp-step-link name="Initial"> < Back</rsvp-step-link> 
               <rsvp-input label="Name" name="FirstName"></rsvp-input>
               <rsvp-input label="Surname" name="LastName"></rsvp-input>
               <rsvp-input label="Email" name="ContactEmail"></rsvp-input>
@@ -104,7 +101,7 @@ export default function Home({ seoAPI, homeAPI, footerAPI }) {
             </rsvp-step>
              
             <rsvp-step step-name="ConfirmInfo">
-            <rsvp-step-link name="ContactDetails"> ← Back</rsvp-step-link> 
+            <rsvp-step-link name="ContactDetails"> < Back</rsvp-step-link> 
               <div>
                 <p>You are booking for <rsvp-span name="Booking.Seats"></rsvp-span> people at <rsvp-span name="Booking.Time.Range"></rsvp-span></p>
               </div>
@@ -139,9 +136,9 @@ export default function Home({ seoAPI, homeAPI, footerAPI }) {
   return (
     <Layout>
       <SEO
-        title={home.page_title}
-        pagelink={router.pathname}
-        inputSEO={home.seo}
+        title={booking.page_title}
+        pagelink={`${booking.slug.current}`}
+        inputSEO={booking.seo}
         defaultSEO={typeof seo !== 'undefined' && seo.seo}
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
@@ -155,27 +152,37 @@ export default function Home({ seoAPI, homeAPI, footerAPI }) {
         src="https://cdn.rsvp-popup.com/webcomponents/rsvp-elements/1.0/rsvp.js"
       />
       <HeaderGap />
-      <Container>
-        <h1 className="font-sans text-center my-8 md:my-16 text-6xl md:text-8xl">
-          {home.title}
-        </h1>
-        <div className="relative w-full h-[500px] rounded-2xl overflow-hidden">
+      <Container className="mt-10">
+        {/* <div className='relative w-full h-[150px] max-w-3xl px-4 mx-auto mb-10'>
           <Image
-            src={urlFor(home.cover_image).url()}
-            alt={home.cover_image.alt}
+            src='/placeholder/nusantara.png'
+            alt='Nusantara'
+            layout='fill'
+            objectFit='contain'
+          />
+        </div> */}
+
+        <h1 className="font-sans text-center my-8 md:my-16 text-6xl md:text-8xl">
+          {booking.title}
+        </h1>
+        <div className="relative w  full h-[500px] rounded-2xl overflow-hidden">
+          <Image
+            src={urlFor(booking.cover_image).url()}
+            alt={booking.cover_image.alt}
             layout="fill"
             objectFit="cover"
+            objectPosition="center"
           />
         </div>
         <div className="setflex-center my-8 mx-auto text-center w-full max-w-3xl editor-styling">
-          <EditorComponent data={home.content_top} />
+          <EditorComponent data={booking.content_top} />
         </div>
-        <div className="RSVPcontainer" dangerouslySetInnerHTML={RSVPinsert()} />
+        <div dangerouslySetInnerHTML={RSVPinsert()} />
 
         <div className="setflex-center mb-16 mt-8 max-w-3xl mx-auto editor-styling">
-          <EditorComponent data={home.content_bottom} />
+          <EditorComponent data={booking.content_bottom} />
           <div className="flex mt-10 space-x-6">
-            {home.popup.map((data, id) => (
+            {booking.popup.map((data, id) => (
               <FancyLink
                 key={id}
                 onClick={() => setModalData(id)}
@@ -186,7 +193,8 @@ export default function Home({ seoAPI, homeAPI, footerAPI }) {
             ))}
           </div>
         </div>
-        {home.popup.map((_, id) => (
+
+        {booking.popup.map((_, id) => (
           <BasicModal
             isOpen={modalData === id}
             onRequestClose={closeModal}
@@ -195,10 +203,10 @@ export default function Home({ seoAPI, homeAPI, footerAPI }) {
             <div className="flex flex-col justify-center w-full h-full bg-white absolute-center md:justify-start md:relative md:top-auto md:left-auto md:translate-x-0 md:translate-y-0">
               <hr className="block lg:hidden w-full mx-auto mb-6" />
               <span className="block font-bold text-lg text-center leading-tight mb-6 lg:font-bold lg:mb-8">
-                {home.popup[id].title} <span className="block mt-2">•</span>
+                {booking.popup[id].title} <span className="block mt-2">•</span>
               </span>
               <div className='editor-styling'>
-                <EditorPopupComponent data={home.popup[id].content} />
+                <EditorPopupComponent data={booking.popup[id].content} />
               </div>
               <hr className="block lg:hidden w-full mx-auto mt-6" />
             </div>
@@ -210,9 +218,21 @@ export default function Home({ seoAPI, homeAPI, footerAPI }) {
   )
 }
 
-export async function getStaticProps() {
-  const homeAPI = await client.fetch(`
-  *[_type == "homeBooking"]
+export async function getStaticPaths() {
+  const res = await client.fetch(`
+      *[_type == "bookingList"]
+    `)
+
+  const paths = res.map((data) => ({
+    params: { slug: data.slug.current.toString() },
+  }))
+
+  return { paths, fallback: false }
+}
+
+export async function getStaticProps({ params }) {
+  const bookingAPI = await client.fetch(`
+  *[_type == "bookingList" && slug.current ==  "${params.slug}"] 
   `)
   const seoAPI = await client.fetch(`
                     *[_type == "settings"]
@@ -227,7 +247,7 @@ export async function getStaticProps() {
     props: {
       seoAPI,
       footerAPI,
-      homeAPI,
+      bookingAPI,
       headerAPI,
     },
   }
