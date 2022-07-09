@@ -1,3 +1,6 @@
+import urlFor from '@/helpers/sanity/urlFor'
+import Image from 'next/image'
+
 const { PortableText } = require('@portabletext/react')
 const { default: FancyLink } = require('../utils/fancyLink')
 const { default: WhatsappModule } = require('./whatsappModule')
@@ -5,9 +8,7 @@ const { default: WhatsappModule } = require('./whatsappModule')
 const EditorPopupComponent = ({ data }) => {
   return (
     <>
-    {
-      console.log(data)
-    }
+      {console.log(data)}
       <PortableText
         value={data}
         components={{
@@ -21,6 +22,35 @@ const EditorPopupComponent = ({ data }) => {
             h5: ({ children }) => <h5 align="center">{children}</h5>,
           },
           types: {
+            image: (props) => (
+              <div className="w-full h-25rem max-md:h-56">
+                <div
+                  className="relative w-full h-full"
+                  style={{
+                    backgroundColor: `rgba(208,208,208, 1)`,
+                  }}
+                >
+                  {props.value && props.value.asset ? (
+                    <Image
+                      src={urlFor(props.value).url()}
+                      alt={props.value.alt}
+                      layout="fill"
+                      objectFit="cover"
+                      objectPosition="center"
+                      placeholder="blur"
+                      blurDataURL={urlFor(props.value)
+                        .blur(2)
+                        .format('webp')
+                        .saturation(-100)
+                        .width(100)
+                        .url()}
+                    />
+                  ) : (
+                    <></>
+                  )}
+                </div>
+              </div>
+            ),
             lineDivider: () => (
               <hr className="w-full lg:w-72 mx-auto linePopup" />
             ),

@@ -88,21 +88,3 @@ h2,
     @apply grid grid-cols-2 max-md:grid-cols-1;
   }
 }
-
-h1.titlestyle {
-  @apply flex mb-0 max-md:flex-wrap justify-center items-start font-sans font-normal flex-wrap;
-  @apply text-6xl sm:text-7xl lg:text-8xl;
-  & .sub {
-    @apply font-serif italic font-normal;
-    @apply mt-1 mx-3 md:mx-4 md:mt-2 lg:mt-2;
-    @apply text-4xl lg:text-5xl;
-  }
-}
-
-h2.editor-title {
-  @apply font-sans font-normal break-words text-left max-md:text-center;
-  @apply text-6xl sm:text-7xl lg:text-8xl;
-  &.smaller {
-    @apply text-4xl sm:text-[3.5rem] sm:leading-none md:text-6xl;
-  }
-}
