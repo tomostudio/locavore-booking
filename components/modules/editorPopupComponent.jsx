@@ -96,6 +96,35 @@ const EditorPopupComponent = ({ data }) => {
                             ),
                           },
                           types: {
+                            image: (props) => (
+                              <div className="w-full h-15rem max-md:h-56">
+                                <div
+                                  className="relative w-full h-full"
+                                  style={{
+                                    backgroundColor: `rgba(208,208,208, 1)`,
+                                  }}
+                                >
+                                  {props.value && props.value.asset ? (
+                                    <Image
+                                      src={urlFor(props.value).url()}
+                                      alt={props.value.alt}
+                                      layout="fill"
+                                      objectFit="cover"
+                                      objectPosition="center"
+                                      placeholder="blur"
+                                      blurDataURL={urlFor(props.value)
+                                        .blur(2)
+                                        .format('webp')
+                                        .saturation(-100)
+                                        .width(100)
+                                        .url()}
+                                    />
+                                  ) : (
+                                    <></>
+                                  )}
+                                </div>
+                              </div>
+                            ),
                             lineDivider: () => <hr className="w-full line" />,
                             dotDivider: () => (
                               <span className="block leading-none dot">•</span>

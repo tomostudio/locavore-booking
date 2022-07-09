@@ -85,6 +85,6 @@ h2,
     @apply block my-3 first:mt-0 last:mb-0;
   }
   & > .column {
-    @apply grid grid-cols-2 max-md:grid-cols-1;
+    @apply grid grid-cols-2 max-md:grid-cols-1 lg:space-x-8;
   }
 }
