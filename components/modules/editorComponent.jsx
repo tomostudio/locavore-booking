@@ -56,7 +56,7 @@ const EditorComponent = ({ data }) => {
               <FancyLink
                 destination={props.value.url}
                 blank={true}
-                className="mb-4 py-4 px-6 text-sm uppercase font-bold tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl pointer-events-auto"
+                className="mb-4 py-4 px-6 text-sm font-bold tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl pointer-events-auto"
               >
                 {props.value.title}
               </FancyLink>
