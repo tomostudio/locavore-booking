@@ -41,9 +41,24 @@ $offBlack: #181818;
   }
 }
 
-.no-select-all{
+.no-select-all {
   *,
-  & *{
+  & * {
     user-select: none !important;
+  }
+}
+
+.next-image-unset {
+  width: 100%;
+
+  > * {
+    position: unset !important;
+  }
+
+  .image {
+    object-fit: contain;
+    width: 100% !important;
+    position: relative !important;
+    height: unset !important;
   }
 }

@@ -1,36 +1,34 @@
-import React, { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
-import BasicModal from '@/components/modules/basicModal'
-import Container from '@/components/modules/container'
-import Footer from '@/components/modules/footer'
-import HeaderGap from '@/components/modules/headerGap'
-import Layout from '@/components/modules/layout'
-import FancyLink from '@/components/utils/fancyLink'
-import SEO from '@/components/utils/seo'
-import { Whatsapp } from '@/helpers/preset/svg'
-import client from '@/helpers/sanity/client'
-import Head from 'next/head'
-import Image from 'next/image'
-import Script from 'next/script'
-import WhatsappModule from '@/components/modules/whatsappModule'
-import urlFor from '@/helpers/sanity/urlFor'
-import EditorComponent from '@/components/modules/editorComponent'
-import EditorPopupComponent from '@/components/modules/editorPopupComponent'
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import BasicModal from '@/components/modules/basicModal';
+import Container from '@/components/modules/container';
+import Footer from '@/components/modules/footer';
+import HeaderGap from '@/components/modules/headerGap';
+import Layout from '@/components/modules/layout';
+import FancyLink from '@/components/utils/fancyLink';
+import SEO from '@/components/utils/seo';
+import client from '@/helpers/sanity/client';
+import Image from 'next/image';
+import Script from 'next/script';
+import urlFor from '@/helpers/sanity/urlFor';
+import EditorComponent from '@/components/modules/editorComponent';
+import EditorPopupComponent from '@/components/modules/editorPopupComponent';
+import { useMediaQuery } from '@/helpers/functional/checkMedia';
 
 export default function Home({ seoAPI, homeAPI, footerAPI }) {
-  const router = useRouter()
-  const [home] = homeAPI
-  const [seo] = seoAPI
-  const [footer] = footerAPI
-  const [modalData, setModalData] = useState('')
+  const router = useRouter();
+  const [home] = homeAPI;
+  const [seo] = seoAPI;
+  const [footer] = footerAPI;
+  const [modalData, setModalData] = useState('');
 
   const closeModal = () => {
-    setModalData('')
-  }
+    setModalData('');
+  };
 
   useEffect(() => {
-    window.scroll(0, 0)
-  }, [])
+    window.scroll(0, 0);
+  }, []);
   const RSVPinsert = () => {
     return {
       __html: `
@@ -134,8 +132,8 @@ export default function Home({ seoAPI, homeAPI, footerAPI }) {
           </template>
         </rsvp-booking-steps>
   </rsvp-element>`,
-    }
-  }
+    };
+  };
   return (
     <Layout>
       <SEO
@@ -145,41 +143,71 @@ export default function Home({ seoAPI, homeAPI, footerAPI }) {
         defaultSEO={typeof seo !== 'undefined' && seo.seo}
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
-      <Script src="https://js.stripe.com/v3/" />
+      <Script src='https://js.stripe.com/v3/' />
       <Script
-        type="module"
-        src="https://cdn.rsvp-popup.com/webcomponents/rsvp-elements/1.0/rsvp.esm.js"
+        type='module'
+        src='https://cdn.rsvp-popup.com/webcomponents/rsvp-elements/1.0/rsvp.esm.js'
       />
       <Script
         nomodule
-        src="https://cdn.rsvp-popup.com/webcomponents/rsvp-elements/1.0/rsvp.js"
+        src='https://cdn.rsvp-popup.com/webcomponents/rsvp-elements/1.0/rsvp.js'
       />
       <HeaderGap />
       <Container>
-        <h1 className="font-sans text-center my-8 md:my-16 text-6xl md:text-8xl">
+        <h1 className='font-sans text-center my-8 md:my-16 text-6xl md:text-8xl'>
           {home.title}
         </h1>
-        <div className="relative w-full h-auto aspect-[1/1] md:aspect-[16/9] max-h-[30rem] rounded-2xl overflow-hidden">
+        <div
+          className={`relative w-full h-auto  rounded-2xl overflow-hidden ${
+            home.cover_image.option
+              ? 'next-image-unset'
+              : ' max-h-[40rem] aspect-[1/1] md:aspect-[6/4] lg:aspect-[16/9]'
+          }`}
+        >
           <Image
-            src={urlFor(home.cover_image.desktop).url()}
+            src={
+              useMediaQuery('(min-width: 768px)')
+                ? urlFor(home.cover_image.desktop)
+                    .width(1920)
+                    .auto('format')
+                    .url()
+                : urlFor(home.cover_image.mobile)
+                    .width(1200)
+                    .auto('format')
+                    .url()
+            }
+            placeholder={'blur'}
+            blurDataURL={
+              useMediaQuery('(min-width: 768px)')
+                ? urlFor(home.cover_image.desktop)
+                    .width(800)
+                    .auto('format')
+                    .url()
+                : urlFor(home.cover_image.mobile)
+                    .width(400)
+                    .auto('format')
+                    .blur(20)
+                    .url()
+            }
             alt={home.cover_image.desktop.alt}
-            layout="fill"
-            objectFit={home.cover_image.option ? "contain" : "cover"}
+            layout='fill'
+            className={'image'}
+            objectFit={home.cover_image.option ? 'contain' : 'cover'}
           />
         </div>
-        <div className="setflex-center my-8 mx-auto text-center w-full max-w-3xl editor-styling">
+        <div className='setflex-center my-8 mx-auto text-center w-full max-w-3xl editor-styling'>
           <EditorComponent data={home.content_top} />
         </div>
-        <div className="RSVPcontainer" dangerouslySetInnerHTML={RSVPinsert()} />
+        <div className='RSVPcontainer' dangerouslySetInnerHTML={RSVPinsert()} />
 
-        <div className="setflex-center mb-16 mt-8 max-w-3xl mx-auto editor-styling">
+        <div className='setflex-center mb-16 mt-8 max-w-3xl mx-auto editor-styling'>
           <EditorComponent data={home.content_bottom} />
-          <div className="flex mt-10 space-x-6">
+          <div className='flex mt-10 space-x-6'>
             {home.popup.map((data, id) => (
               <FancyLink
                 key={id}
                 onClick={() => setModalData(id)}
-                className="py-4 px-6 uppercase text-sm font-bold tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl pointer-events-auto"
+                className='py-4 px-6 uppercase text-sm font-bold tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl pointer-events-auto'
               >
                 {data.button_text}
               </FancyLink>
@@ -193,37 +221,37 @@ export default function Home({ seoAPI, homeAPI, footerAPI }) {
             classNameModalContent={`popup`}
             key={id}
           >
-            <div className="flex flex-col justify-center w-full h-full bg-white absolute-center md:justify-start md:relative md:top-auto md:left-auto md:translate-x-0 md:translate-y-0">
-              <hr className="block lg:hidden w-full mx-auto mb-6" />
-              <span className="block font-bold text-lg text-center leading-tight mb-6 lg:font-bold lg:mb-8">
-                {home.popup[id].title} <span className="block mt-2">•</span>
+            <div className='flex flex-col justify-center w-full h-full bg-white absolute-center md:justify-start md:relative md:top-auto md:left-auto md:translate-x-0 md:translate-y-0'>
+              <hr className='block lg:hidden w-full mx-auto mb-6' />
+              <span className='block font-bold text-lg text-center leading-tight mb-6 lg:font-bold lg:mb-8'>
+                {home.popup[id].title} <span className='block mt-2'>•</span>
               </span>
               <div className='editor-styling'>
                 <EditorPopupComponent data={home.popup[id].content} />
               </div>
-              <hr className="block lg:hidden w-full mx-auto mt-6" />
+              <hr className='block lg:hidden w-full mx-auto mt-6' />
             </div>
           </BasicModal>
         ))}
       </Container>
       <Footer footer={footer} mailchimp={seo.mailchimpID} />
     </Layout>
-  )
+  );
 }
 
 export async function getStaticProps() {
   const homeAPI = await client.fetch(`
   *[_type == "homeBooking"]
-  `)
+  `);
   const seoAPI = await client.fetch(`
                     *[_type == "settings"]
-                    `)
+                    `);
   const headerAPI = await client.fetch(`
                     *[_type == "header"]
-                    `)
+                    `);
   const footerAPI = await client.fetch(`
                     *[_type == "footer"]
-                    `)
+                    `);
   return {
     props: {
       seoAPI,
@@ -231,5 +259,5 @@ export async function getStaticProps() {
       homeAPI,
       headerAPI,
     },
-  }
+  };
 }

@@ -1,33 +1,32 @@
-import React, { useState, useEffect } from 'react'
-import Container from '@/components/modules/container'
-import Footer from '@/components/modules/footer'
-import HeaderGap from '@/components/modules/headerGap'
-import Layout from '@/components/modules/layout'
-import FancyLink from '@/components/utils/fancyLink'
-import SEO from '@/components/utils/seo'
-import { Whatsapp } from '@/helpers/preset/svg'
-import client from '@/helpers/sanity/client'
-import Script from 'next/script'
-import Image from 'next/image'
-import WhatsappModule from '@/components/modules/whatsappModule'
-import BasicModal from '@/components/modules/basicModal'
-import urlFor from '@/helpers/sanity/urlFor'
-import EditorComponent from '@/components/modules/editorComponent'
-import EditorPopupComponent from '@/components/modules/editorPopupComponent'
+import React, { useState, useEffect } from 'react';
+import Container from '@/components/modules/container';
+import Footer from '@/components/modules/footer';
+import HeaderGap from '@/components/modules/headerGap';
+import Layout from '@/components/modules/layout';
+import FancyLink from '@/components/utils/fancyLink';
+import SEO from '@/components/utils/seo';
+import client from '@/helpers/sanity/client';
+import Script from 'next/script';
+import Image from 'next/image';
+import BasicModal from '@/components/modules/basicModal';
+import urlFor from '@/helpers/sanity/urlFor';
+import EditorComponent from '@/components/modules/editorComponent';
+import EditorPopupComponent from '@/components/modules/editorPopupComponent';
+import { useMediaQuery } from '@/helpers/functional/checkMedia';
 
 export default function Nusantara({ seoAPI, footerAPI, bookingAPI }) {
-  const [booking] = bookingAPI
-  const [seo] = seoAPI
-  const [footer] = footerAPI
-  const [modalData, setModalData] = useState('')
+  const [booking] = bookingAPI;
+  const [seo] = seoAPI;
+  const [footer] = footerAPI;
+  const [modalData, setModalData] = useState('');
 
   const closeModal = () => {
-    setModalData('')
-  }
+    setModalData('');
+  };
 
   useEffect(() => {
-    window.scroll(0, 0)
-  }, [])
+    window.scroll(0, 0);
+  }, []);
   const RSVPinsert = () => {
     return {
       __html: `
@@ -131,8 +130,8 @@ export default function Nusantara({ seoAPI, footerAPI, bookingAPI }) {
           </template>
         </rsvp-booking-steps>
   </rsvp-element>`,
-    }
-  }
+    };
+  };
   return (
     <Layout>
       <SEO
@@ -142,41 +141,71 @@ export default function Nusantara({ seoAPI, footerAPI, bookingAPI }) {
         defaultSEO={typeof seo !== 'undefined' && seo.seo}
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
-      <Script src="https://js.stripe.com/v3/" />
+      <Script src='https://js.stripe.com/v3/' />
       <Script
-        type="module"
-        src="https://cdn.rsvp-popup.com/webcomponents/rsvp-elements/1.0/rsvp.esm.js"
+        type='module'
+        src='https://cdn.rsvp-popup.com/webcomponents/rsvp-elements/1.0/rsvp.esm.js'
       />
       <Script
         nomodule
-        src="https://cdn.rsvp-popup.com/webcomponents/rsvp-elements/1.0/rsvp.js"
+        src='https://cdn.rsvp-popup.com/webcomponents/rsvp-elements/1.0/rsvp.js'
       />
       <HeaderGap />
       <Container>
-        <h1 className="font-sans text-center my-8 md:my-16 text-6xl md:text-8xl">
+        <h1 className='font-sans text-center my-8 md:my-16 text-6xl md:text-8xl'>
           {booking.title}
         </h1>
-        <div className="relative w-full h-auto aspect-[1/1] md:aspect-[16/9] max-h-[30rem] rounded-2xl overflow-hidden">
+        <div
+          className={`relative w-full h-auto rounded-2xl overflow-hidden ${
+            booking.cover_image.option
+              ? 'next-image-unset'
+              : 'max-h-[40rem] aspect-[1/1] md:aspect-[6/4] xl:aspect-[16/9]'
+          }`}
+        >
           <Image
-            src={urlFor(booking.cover_image.desktop).url()}
+            src={
+              useMediaQuery('(min-width: 768px)')
+                ? urlFor(booking.cover_image.desktop)
+                    .width(1920)
+                    .auto('format')
+                    .url()
+                : urlFor(booking.cover_image.mobile)
+                    .width(1200)
+                    .auto('format')
+                    .url()
+            }
+            placeholder={'blur'}
+            blurDataURL={
+              useMediaQuery('(min-width: 768px)')
+                ? urlFor(booking.cover_image.desktop)
+                    .width(800)
+                    .auto('format')
+                    .url()
+                : urlFor(booking.cover_image.mobile)
+                    .width(400)
+                    .auto('format')
+                    .blur(20)
+                    .url()
+            }
             alt={booking.cover_image.desktop.alt}
-            layout="fill"
-            objectFit={booking.cover_image.option ? "contain" : "cover"}
+            layout='fill'
+            className={'image'}
+            objectFit={booking.cover_image.option ? 'contain' : 'cover'}
           />
         </div>
-        <div className="setflex-center my-8 mx-auto text-center w-full max-w-3xl editor-styling">
+        <div className='setflex-center my-8 mx-auto text-center w-full max-w-3xl editor-styling'>
           <EditorComponent data={booking.content_top} />
         </div>
         <div dangerouslySetInnerHTML={RSVPinsert()} />
 
-        <div className="setflex-center mb-16 mt-8 max-w-3xl mx-auto editor-styling">
+        <div className='setflex-center mb-16 mt-8 max-w-3xl mx-auto editor-styling'>
           <EditorComponent data={booking.content_bottom} />
-          <div className="flex mt-10 space-x-6">
+          <div className='flex mt-10 space-x-6'>
             {booking.popup.map((data, id) => (
               <FancyLink
                 key={id}
                 onClick={() => setModalData(id)}
-                className="py-4 px-6 uppercase text-sm font-bold tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl pointer-events-auto"
+                className='py-4 px-6 uppercase text-sm font-bold tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl pointer-events-auto'
               >
                 {data.button_text}
               </FancyLink>
@@ -190,49 +219,49 @@ export default function Nusantara({ seoAPI, footerAPI, bookingAPI }) {
             onRequestClose={closeModal}
             classNameModalContent={`popup`}
           >
-            <div className="flex flex-col justify-center w-full h-full bg-white absolute-center md:justify-start md:relative md:top-auto md:left-auto md:translate-x-0 md:translate-y-0">
-              <hr className="block lg:hidden w-full mx-auto mb-6" />
-              <span className="block font-bold text-lg text-center leading-tight mb-6 lg:font-bold lg:mb-8">
-                {booking.popup[id].title} <span className="block mt-2">•</span>
+            <div className='flex flex-col justify-center w-full h-full bg-white absolute-center md:justify-start md:relative md:top-auto md:left-auto md:translate-x-0 md:translate-y-0'>
+              <hr className='block lg:hidden w-full mx-auto mb-6' />
+              <span className='block font-bold text-lg text-center leading-tight mb-6 lg:font-bold lg:mb-8'>
+                {booking.popup[id].title} <span className='block mt-2'>•</span>
               </span>
               <div className='editor-styling'>
                 <EditorPopupComponent data={booking.popup[id].content} />
               </div>
-              <hr className="block lg:hidden w-full mx-auto mt-6" />
+              <hr className='block lg:hidden w-full mx-auto mt-6' />
             </div>
           </BasicModal>
         ))}
       </Container>
       <Footer footer={footer} mailchimp={seo.mailchimpID} />
     </Layout>
-  )
+  );
 }
 
 export async function getStaticPaths() {
   const res = await client.fetch(`
       *[_type == "bookingList"]
-    `)
+    `);
 
   const paths = res.map((data) => ({
     params: { slug: data.slug.current.toString() },
-  }))
+  }));
 
-  return { paths, fallback: false }
+  return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
   const bookingAPI = await client.fetch(`
   *[_type == "bookingList" && slug.current ==  "${params.slug}"] 
-  `)
+  `);
   const seoAPI = await client.fetch(`
                     *[_type == "settings"]
-                    `)
+                    `);
   const headerAPI = await client.fetch(`
                     *[_type == "header"]
-                    `)
+                    `);
   const footerAPI = await client.fetch(`
                     *[_type == "footer"]
-                    `)
+                    `);
   return {
     props: {
       seoAPI,
@@ -240,5 +269,5 @@ export async function getStaticProps({ params }) {
       bookingAPI,
       headerAPI,
     },
-  }
+  };
 }
