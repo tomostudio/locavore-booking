@@ -191,6 +191,7 @@ export default function Home({ seoAPI, homeAPI, footerAPI }) {
             isOpen={modalData === id}
             onRequestClose={closeModal}
             classNameModalContent={`popup`}
+            key={id}
           >
             <div className="flex flex-col justify-center w-full h-full bg-white absolute-center md:justify-start md:relative md:top-auto md:left-auto md:translate-x-0 md:translate-y-0">
               <hr className="block lg:hidden w-full mx-auto mb-6" />
