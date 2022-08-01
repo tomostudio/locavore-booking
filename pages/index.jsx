@@ -34,7 +34,7 @@ export default function Home({ seoAPI, homeAPI, footerAPI }) {
   const RSVPinsert = () => {
     return {
       __html: `
-    <rsvp-element bookable-id="${home.rsvp.id}" api-path="${home.rsvp.path}">
+    <rsvp-element bookable-id="${home.rsvp}" api-path="restaurants">
     
     <!-- <rsvp-image></rsvp-image> -->
     <rsvp-booking-steps button-text="NEXT">
@@ -159,12 +159,12 @@ export default function Home({ seoAPI, homeAPI, footerAPI }) {
         <h1 className="font-sans text-center my-8 md:my-16 text-6xl md:text-8xl">
           {home.title}
         </h1>
-        <div className="relative w-full h-[500px] rounded-2xl overflow-hidden">
+        <div className="relative w-full h-auto aspect-[1/1] md:aspect-[16/9] max-h-[30rem] rounded-2xl overflow-hidden">
           <Image
-            src={urlFor(home.cover_image).url()}
-            alt={home.cover_image.alt}
+            src={urlFor(home.cover_image.desktop).url()}
+            alt={home.cover_image.desktop.alt}
             layout="fill"
-            objectFit="cover"
+            objectFit={home.cover_image.option ? "contain" : "cover"}
           />
         </div>
         <div className="setflex-center my-8 mx-auto text-center w-full max-w-3xl editor-styling">

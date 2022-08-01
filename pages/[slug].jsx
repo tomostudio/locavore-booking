@@ -31,7 +31,7 @@ export default function Nusantara({ seoAPI, footerAPI, bookingAPI }) {
   const RSVPinsert = () => {
     return {
       __html: `
-    <rsvp-element bookable-id="${booking.rsvp.id}" api-path="${booking.rsvp.path}">
+    <rsvp-element bookable-id="${booking.rsvp}" api-path="restaurants">
     
     <!-- <rsvp-image></rsvp-image> -->
     <rsvp-booking-steps button-text="NEXT">
@@ -152,26 +152,16 @@ export default function Nusantara({ seoAPI, footerAPI, bookingAPI }) {
         src="https://cdn.rsvp-popup.com/webcomponents/rsvp-elements/1.0/rsvp.js"
       />
       <HeaderGap />
-      <Container className="mt-10">
-        {/* <div className='relative w-full h-[150px] max-w-3xl px-4 mx-auto mb-10'>
-          <Image
-            src='/placeholder/nusantara.png'
-            alt='Nusantara'
-            layout='fill'
-            objectFit='contain'
-          />
-        </div> */}
-
+      <Container>
         <h1 className="font-sans text-center my-8 md:my-16 text-6xl md:text-8xl">
           {booking.title}
         </h1>
-        <div className="relative w  full h-[500px] rounded-2xl overflow-hidden">
+        <div className="relative w-full h-auto aspect-[1/1] md:aspect-[16/9] max-h-[30rem] rounded-2xl overflow-hidden">
           <Image
-            src={urlFor(booking.cover_image).url()}
-            alt={booking.cover_image.alt}
+            src={urlFor(booking.cover_image.desktop).url()}
+            alt={booking.cover_image.desktop.alt}
             layout="fill"
-            objectFit="cover"
-            objectPosition="center"
+            objectFit={booking.cover_image.option ? "contain" : "cover"}
           />
         </div>
         <div className="setflex-center my-8 mx-auto text-center w-full max-w-3xl editor-styling">
