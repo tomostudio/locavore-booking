@@ -159,7 +159,7 @@ export default function Nusantara({ seoAPI, footerAPI, bookingAPI }) {
           className={`relative w-full h-auto rounded-2xl overflow-hidden ${
             booking.cover_image.option
               ? 'next-image-unset'
-              : 'max-h-[40rem] aspect-[1/1] md:aspect-[6/4] xl:aspect-[16/9]'
+              : 'max-h-[35rem]  aspect-[1/1] md:aspect-[6/4] xl:aspect-[16/9]'
           }`}
         >
           <Image
