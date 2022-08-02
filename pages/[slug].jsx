@@ -200,12 +200,12 @@ export default function Nusantara({ seoAPI, footerAPI, bookingAPI }) {
 
         <div className='setflex-center mb-16 mt-8 max-w-3xl mx-auto editor-styling'>
           <EditorComponent data={booking.content_bottom} />
-          <div className='flex mt-10 space-x-6'>
+          <div className='!flex mt-10 justify-center w-full flex-wrap'>
             {booking.popup.map((data, id) => (
               <FancyLink
                 key={id}
                 onClick={() => setModalData(id)}
-                className='py-4 px-6 uppercase text-sm font-bold tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl pointer-events-auto'
+                className='py-4 px-6 mt-3 mx-2 uppercase text-sm font-bold tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl pointer-events-auto'
               >
                 {data.button_text}
               </FancyLink>
