@@ -71,6 +71,7 @@ const SEO = ({
           url: canonicalLink,
           title: pagetitle,
           description: description,
+          type: 'website',
           images: [
             {
               url: image,
