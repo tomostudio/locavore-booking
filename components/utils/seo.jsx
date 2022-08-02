@@ -8,7 +8,7 @@ const SEO = ({
   defaultSEO = '',
   webTitle = '',
   title = 'Locavore',
-  pagelink = 'https://locavorenext.com',
+  pagelink = 'https://book.locavorenext.com',
 }) => {
   const description =
     typeof inputSEO !== 'undefined' &&
@@ -57,7 +57,7 @@ const SEO = ({
       : '';
 
   const pagetitle = title && webTitle ? `${title} • ${webTitle}` : `Locavore®`;
-  const canonicalLink = `https://locavorenext.com${
+  const canonicalLink = `https://book.locavorenext.com${
     pagelink ? `${pagelink.startsWith('/') ? '' : '/'}${pagelink}` : ''
   }`;
 
