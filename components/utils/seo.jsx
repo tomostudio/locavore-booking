@@ -77,10 +77,10 @@ const SEO = ({
               alt: image_alt,
             },
           ],
-          site_name: 'Locavore',
+          site_name: 'Locavore Booking',
         }}
         twitter={{
-          site: 'Locavore',
+          site: 'Locavore Booking',
           cardType: 'summary_large_image',
         }}
       />
