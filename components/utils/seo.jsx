@@ -25,12 +25,12 @@ const SEO = ({
     typeof inputSEO.seo_image !== 'undefined' &&
     typeof inputSEO.seo_image.asset !== 'undefined' &&
     inputSEO.seo_image
-      ? urlFor(inputSEO.seo_image).url() // Check and Get Input
+      ? urlFor(inputSEO.seo_image).auto("format").width(800).url() // Check and Get Input
       : typeof defaultSEO !== 'undefined' &&
         typeof defaultSEO.seo_image !== 'undefined' &&
         typeof defaultSEO.seo_image.asset !== 'undefined' &&
         defaultSEO.seo_image
-      ? urlFor(defaultSEO.seo_image).url() // Check and Get Default
+      ? urlFor(defaultSEO.seo_image).auto("format").width(800).url() // Check and Get Default
       : ''; // Insert Blank
 
   const image_alt =
@@ -76,6 +76,9 @@ const SEO = ({
             {
               url: image,
               alt: image_alt,
+              width: 800,
+              height: 600,
+              type: 'image/jpeg',
             },
           ],
           site_name: 'Locavore Booking',
