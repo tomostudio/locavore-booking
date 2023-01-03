@@ -63,31 +63,45 @@ const EditorComponent = ({ data }) => {
             ),
           },
           marks: {
-            link: (props) => (
-              <FancyLink destination={props.value.url}>
-                {props.children}
-              </FancyLink>
-            ),
-            wa_link: (props) => (
-              <WhatsappModule
-                whatsappLink={props.value.url}
-                whatsappText={props.children}
-              />
-            ),
-            email: (props) => (
-              <FancyLink
-                blank={true}
-                href={`mailto:${props.value.content}`}
-                className="italic font-serif font-semibold text-lg"
-              >
-                {props.children}
-              </FancyLink>
-            ),
-            font: (props) => (
-              <span className={`${props.value.type} italic`}>
-                {props.children}
-              </span>
-            ),
+            add_ann: (props) =>
+              props.value?.link ||
+              props.value?.wa_link ||
+              props.value?.email ? (
+                props.value?.select_link === 'default' ? (
+                  <FancyLink
+                    destination={props.value?.link}
+                    blank={props.value?.target_blank}
+                  >
+                    {props.children}
+                  </FancyLink>
+                ) : props.value?.select_link === 'wa_link' ? (
+                  <WhatsappModule
+                    whatsappLink={props.value?.wa_link}
+                    whatsappText={props.children}
+                  />
+                ) : props.value?.select_link === 'email' ? (
+                  <FancyLink
+                    destination={props.value?.email}
+                    className="italic font-serif font-semibold text-lg"
+                  >
+                    {props.children}
+                  </FancyLink>
+                ) : (
+                  <></>
+                )
+              ) : (
+                <span
+                  className={`${
+                    props.value?.font
+                      ? props.value?.font === 'display'
+                        ? 'font-default'
+                        : props.value.font
+                      : 'font-default'
+                  } italic`}
+                >
+                  {props.children}
+                </span>
+              ),
           },
         }}
       />
