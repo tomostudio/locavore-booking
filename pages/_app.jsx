@@ -4,6 +4,7 @@ import Header from '@/components/modules/header.jsx'
 import Script from 'next/script'
 import Head from 'next/head'
 import { AppWrapper } from 'context/state'
+import TOMOStudioHead from '@/components/utils/tomostudio-insert'
 
 export default function App({ Component, pageProps }) {
   const router = useRouter()
@@ -24,6 +25,7 @@ export default function App({ Component, pageProps }) {
         </Script>
 
       <Head>
+        <TOMOStudioHead />
         {/* FAVICON  */}
         <link
           rel="icon"
